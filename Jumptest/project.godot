@@ -60,6 +60,15 @@ quit=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
  ]
 
+[layer_names]
+
+2d_physics/layer_1="Wall"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Riceball"
+2d_physics/layer_5="Shuriken"
+2d_physics/layer_6="Grab-able"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/tilesheetv1mini.png" type="Texture" id=1]
+[ext_resource path="res://Brick Block.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,14 +13,16 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Ground" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
+
 [node name="Ground Corner 1" type="Sprite" parent="Ground" index="0"]
 
 editor/display_folded = true
-scale = Vector2( 1, 1 )
+visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -27,12 +30,13 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground/Ground Corner 1" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 33
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground Corner 1/StaticBody2D" index="0"]
 
@@ -42,7 +46,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 16, 0, 16, 16 )
@@ -54,12 +57,13 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground/Ground Corner 2" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 33
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground Corner 2/StaticBody2D" index="0"]
 
@@ -69,7 +73,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
@@ -96,7 +99,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 16, 16, 16, 16 )
@@ -123,7 +125,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 96, 64, 16, 16 )
@@ -150,7 +151,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 0, 16, 16 )
@@ -177,7 +177,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 0, 16, 16 )
@@ -204,7 +203,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 16, 16, 16 )
@@ -231,7 +229,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 16, 16, 16 )
@@ -258,7 +255,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 16, 16 )
@@ -285,7 +281,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 48, 0, 16, 16 )
@@ -312,7 +307,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 32, 16, 16, 16 )
@@ -339,7 +333,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 48, 16, 16, 16 )
@@ -364,41 +357,14 @@ shape = SubResource( 1 )
 
 [node name="Blocks" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
-visible = false
+[node name="Brick Block" parent="Blocks" index="0" instance=ExtResource( 2 )]
 
-[node name="Brick Block" type="Sprite" parent="Blocks" index="0"]
-
-editor/display_folded = true
-visible = false
-scale = Vector2( 1, 1 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 64, 64, 16, 16 )
-_sections_unfolded = [ "Region" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Blocks/Brick Block" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocks/Brick Block/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
+_sections_unfolded = [ "Animation", "Region" ]
 
 [node name="Block" type="Sprite" parent="Blocks" index="1"]
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 64, 16, 16 )
@@ -410,12 +376,13 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Blocks/Block" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 33
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blocks/Block/StaticBody2D" index="0"]
 
@@ -425,7 +392,6 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 visible = false
-scale = Vector2( 1, 1 )
 
 [node name="Spike Right" type="Sprite" parent="Spikes" index="0"]
 

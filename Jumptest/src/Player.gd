@@ -66,6 +66,9 @@ func get_directional_input(delta):
 			velocity.y = -jump_strength
 	else:
 		velocity.y += gravity * FASTFALL
+	
+	if $LedgeRay.is_colliding():
+		print("Grabbed")
 	return
 
 
@@ -83,6 +86,9 @@ func do_x_movement(dir):
 	# Flip Shuriken origin point if we are looking left
 	if sign($"Shuriken Origin".position.x) == -dir:
 		$"Shuriken Origin".position.x *= -1
+	if sign($LedgeRay.position.x) == -dir:
+		$LedgeRay.position.x *= -1
+		$LedgeRay.cast_to.x *= -1
 	return
 
 
