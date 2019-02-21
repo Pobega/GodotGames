@@ -44,7 +44,15 @@ func handle_player_input(delta):
 
 # Read and process Right/Left/Down and Up/Jump input
 func get_directional_input(delta):
-	# Test X movement first, lowest proiority sprite animations
+	# Test for ledgegrabs first
+	if $LedgeRay.is_colliding() and sign(velocity.y) == 1 and not is_on_floor() and grabbing_ledge == false:
+		if not Input.is_action_pressed("ui_down"):
+			velocity.y=0
+			grabbing_ledge = true
+			emit_signal("ledgegrab")
+
+	# Test X movement next, lowest proiority sprite animations
+	# But we don't want to do horizontal flips if ledge grabbing
 	if Input.is_action_pressed("ui_right"):
 		do_x_movement(MOVE_RIGHT)
 	elif Input.is_action_pressed("ui_left"):
@@ -81,11 +89,7 @@ func get_directional_input(delta):
 		if not grabbing_ledge:
 			velocity.y += gravity * FASTFALL
 	
-	if $LedgeRay.is_colliding() and sign(velocity.y) == 1 and not is_on_floor() and grabbing_ledge == false:
-		if not Input.is_action_pressed("ui_down"):
-			velocity.y=0
-			grabbing_ledge = true
-			emit_signal("ledgegrab")
+
 
 	if Input.is_action_pressed("ui_down") and grabbing_ledge:
 		$Sprite.play("jump")
@@ -100,6 +104,8 @@ func get_directional_input(delta):
 # Do movement on the X axis
 # @dir : 1 if moving right, -1 if moving left
 func do_x_movement(dir):
+	if grabbing_ledge:
+		return
 	velocity.x = dir * speed
 #	if $Sprite.get_animation() != "jump" or is_on_floor():
 	if is_on_floor():
