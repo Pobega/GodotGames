@@ -4,10 +4,13 @@ signal jump
 signal run
 signal ledgegrab
 
-export(int) var speed
-export(int) var xgravity
-export(int) var gravity
-export(int) var jump_strength
+# Horizontal movement
+export(int, 200) var startspeed = 30
+export(int, 200) var maxspeed = 100
+export(float, 1.01, 10) var accel = 1.08
+# Vertical movement
+export(int, 100) var gravity = 10
+export(int, 250) var jump_strength = 250
 
 # const for fastfalling, gravity multiplier for down vector
 const FASTFALL = 2.5
@@ -106,11 +109,20 @@ func get_directional_input(delta):
 func do_x_movement(dir):
 	if grabbing_ledge:
 		return
-	velocity.x = dir * speed
-#	if $Sprite.get_animation() != "jump" or is_on_floor():
+		
+	if abs(velocity.x) < startspeed:
+		velocity.x = dir * startspeed
+	else:
+		velocity.x = dir * min((abs(velocity.x) * accel), maxspeed)
+
 	if is_on_floor():
 		emit_signal("run")
 
+	flip_hitboxes(dir)
+	return
+
+
+func flip_hitboxes(dir):
 	# Shift -1/1 to 0/2 so we can convert to bool.
 	# Negate it to pass into flip_h
 	if not grabbing_ledge:

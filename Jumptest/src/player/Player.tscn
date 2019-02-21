@@ -2,17 +2,17 @@
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/Ninja/run1.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/Ninja/run2.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/Ninja/run3.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/Ninja/run1.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/Ninja/run2.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/Ninja/run3.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=13]
 [ext_resource path="res://src/player/Sprite.gd" type="Script" id=14]
 [ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=15]
 [ext_resource path="res://src/player/Jump.gd" type="Script" id=16]
@@ -26,30 +26,30 @@ animations = [ {
 "name": "ledgegrab",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "crouch",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "neutral",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "crouch",
-"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -58,7 +58,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 5.36306 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 1, 1 )
 scale = Vector2( 1.5, 1.5 )
@@ -68,8 +68,9 @@ collision_mask = 13
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
-speed = 60
-xgravity = null
+startspeed = 30
+maxspeed = 100
+accel = 1.08
 gravity = 10
 jump_strength = 250
 
@@ -77,7 +78,6 @@ jump_strength = 250
 
 frames = SubResource( 1 )
 animation = "neutral"
-frame = 1
 playing = true
 script = ExtResource( 14 )
 _sections_unfolded = [ "Material", "Visibility" ]
@@ -114,9 +114,9 @@ script = ExtResource( 16 )
 
 [node name="Camera2D" parent="." index="5" instance=ExtResource( 17 )]
 
-[connection signal="jump" from="." to="Jump" method="_on_Player_jump"]
-
 [connection signal="jump" from="." to="Sprite" method="_on_Player_jump"]
+
+[connection signal="jump" from="." to="Jump" method="_on_Player_jump"]
 
 [connection signal="ledgegrab" from="." to="Sprite" method="_on_Player_ledgegrab"]
 

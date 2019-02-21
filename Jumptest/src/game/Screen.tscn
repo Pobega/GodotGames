@@ -24,7 +24,7 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[node name="Screen" type="Node"]
+[node name="Screen" type="Node" index="0"]
 
 [node name="Background Text" type="Node" parent="." index="0"]
 
@@ -219,7 +219,8 @@ position = Vector2( 440, 56 )
 [node name="Player" parent="Entities" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 52.5752, 179.576 )
-speed = 100
+maxspeed = 120
+accel = 1.08
 
 [node name="TileMap" type="TileMap" parent="." index="2" groups=[
 "tilemaps",
