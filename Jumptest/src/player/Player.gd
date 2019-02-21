@@ -11,6 +11,7 @@ export(float, 1.01, 10) var accel = 1.08
 # Vertical movement
 export(int, 100) var gravity = 10
 export(int, 250) var jump_strength = 250
+export(int) var maxfallspeed = 600
 
 # const for fastfalling, gravity multiplier for down vector
 const FASTFALL = 2.5
@@ -100,7 +101,7 @@ func get_directional_input(delta):
 		grabbing_ledge = false
 
 	# Maximum velocity
-	velocity.y = min(velocity.y, 600)
+	velocity.y = min(velocity.y, maxfallspeed)
 	return
 
 

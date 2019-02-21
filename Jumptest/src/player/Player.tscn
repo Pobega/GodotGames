@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=2]
@@ -8,15 +8,16 @@
 [ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=13]
 [ext_resource path="res://src/player/Sprite.gd" type="Script" id=14]
-[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=15]
-[ext_resource path="res://src/player/Jump.gd" type="Script" id=16]
-[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=15]
+[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=16]
+[ext_resource path="res://src/player/Jump.gd" type="Script" id=17]
+[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -38,18 +39,18 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "crouch",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
 "name": "neutral",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "crouch",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -58,7 +59,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 5.36306 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 1, 1 )
 scale = Vector2( 1.5, 1.5 )
@@ -73,6 +74,7 @@ maxspeed = 100
 accel = 1.08
 gravity = 10
 jump_strength = 250
+maxfallspeed = 600
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -95,28 +97,29 @@ position = Vector2( 8.82353, 1.76471 )
 
 [node name="LedgeRay" type="RayCast2D" parent="." index="3"]
 
-position = Vector2( 3, -2.00001 )
+position = Vector2( 7, -6 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 5, 0 )
+cast_to = Vector2( 0, 2 )
 collision_mask = 32
+script = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Jump" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
-[node name="Camera2D" parent="." index="5" instance=ExtResource( 17 )]
-
-[connection signal="jump" from="." to="Sprite" method="_on_Player_jump"]
+[node name="Camera2D" parent="." index="5" instance=ExtResource( 18 )]
 
 [connection signal="jump" from="." to="Jump" method="_on_Player_jump"]
+
+[connection signal="jump" from="." to="Sprite" method="_on_Player_jump"]
 
 [connection signal="ledgegrab" from="." to="Sprite" method="_on_Player_ledgegrab"]
 
