@@ -92,6 +92,8 @@ func get_directional_input(delta):
 		velocity.y = gravity * FASTFALL * 4
 		grabbing_ledge = false
 
+	# Maximum velocity
+	velocity.y = min(velocity.y, 600)
 	return
 
 
