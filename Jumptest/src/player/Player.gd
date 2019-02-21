@@ -82,9 +82,10 @@ func get_directional_input(delta):
 			velocity.y += gravity * FASTFALL
 	
 	if $LedgeRay.is_colliding() and sign(velocity.y) == 1 and not is_on_floor() and grabbing_ledge == false:
-		velocity.y=0
-		grabbing_ledge = true
-		emit_signal("ledgegrab")
+		if not Input.is_action_pressed("ui_down"):
+			velocity.y=0
+			grabbing_ledge = true
+			emit_signal("ledgegrab")
 
 	if Input.is_action_pressed("ui_down") and grabbing_ledge:
 		$Sprite.play("jump")
