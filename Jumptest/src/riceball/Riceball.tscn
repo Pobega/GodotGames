@@ -26,7 +26,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Riceball" type="Area2D"]
+[node name="Riceball" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -68,11 +68,11 @@ script = ExtResource( 9 )
 
 [connection signal="body_entered" from="." to="." method="_on_Riceball_body_entered"]
 
-[connection signal="collect" from="." to="Collect" method="_on_Riceball_collect"]
+[connection signal="collect" from="." to="CollisionShape2D" method="_on_Riceball_collect"]
 
 [connection signal="collect" from="." to="Sprite" method="_on_Riceball_collect"]
 
-[connection signal="collect" from="." to="CollisionShape2D" method="_on_Riceball_collect"]
+[connection signal="collect" from="." to="Collect" method="_on_Riceball_collect"]
 
 [connection signal="finished" from="Collect" to="." method="_on_Collect_finished"]
 
