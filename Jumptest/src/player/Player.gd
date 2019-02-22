@@ -3,10 +3,12 @@ extends KinematicBody2D
 signal jump
 signal run
 signal ledgegrab
+signal doublejump
 
 # Horizontal movement
 export(int, 200) var startspeed = 30
 export(int, 200) var maxspeed = 100
+export(int, 200) var walljumpspeed = 70
 export(float, 1.01, 10) var accel = 1.08
 # Vertical movement
 export(int, 100) var gravity = 10
@@ -26,7 +28,10 @@ const MOVE_LEFT = -1
 var velocity = Vector2()
 
 var grabbing_ledge = false
+var can_double_jump = true
+var stored_x_velocity
 
+var snap = Vector2()
 
 # Ensure we start with the neutral animation
 func _ready():
@@ -48,9 +53,11 @@ func handle_player_input(delta):
 
 # Read and process Right/Left/Down and Up/Jump input
 func get_directional_input(delta):
+	stored_x_velocity = 0
 	# Test for ledgegrabs first
 	if $LedgeRay.is_colliding() and sign(velocity.y) == 1 and not is_on_floor() and grabbing_ledge == false:
 		if not Input.is_action_pressed("ui_down"):
+			snap_to_corner($LedgeRay.get_collider())
 			velocity.y=0
 			grabbing_ledge = true
 			emit_signal("ledgegrab")
@@ -71,9 +78,6 @@ func get_directional_input(delta):
 				$Sprite.play("neutral")
 		velocity.x = 0 # TODO: replace with slowdown instead of outright stop?
 
-	if grabbing_ledge:
-		velocity.x = 0
-
 	# Jumping has higher priority than X movement
 	# We fastfall either at the apex of our jump, or when the button is let go
 	# to give the jump a more "weighty" feel
@@ -87,6 +91,7 @@ func get_directional_input(delta):
 			velocity.y = -jump_strength
 			if grabbing_ledge:
 				grabbing_ledge = false
+				velocity.x = stored_x_velocity
 				velocity.y = -(jump_strength/1.2)
 
 	else:
@@ -94,10 +99,22 @@ func get_directional_input(delta):
 			velocity.y += gravity * FASTFALL
 	
 
+	# Double Jump
+	if Input.is_action_just_pressed("ui_up") and can_double_jump:
+		if not $MinDblJumpHeight.is_colliding():
+			emit_signal("doublejump")
+			velocity.y = -jump_strength
+			can_double_jump = false
+	if is_on_floor() or grabbing_ledge:
+		can_double_jump = true
+
+
+
 
 	if Input.is_action_pressed("ui_down") and grabbing_ledge:
 		$Sprite.play("jump")
 		velocity.y = gravity * FASTFALL * 4
+		velocity.x = stored_x_velocity
 		grabbing_ledge = false
 
 	# Maximum velocity
@@ -105,10 +122,17 @@ func get_directional_input(delta):
 	return
 
 
+func snap_to_corner(collider):
+	snap.y = collider.global_position.y+4
+
+func facing_left():
+	return $Sprite.is_flipped_h()
+
 # Do movement on the X axis
 # @dir : 1 if moving right, -1 if moving left
 func do_x_movement(dir):
 	if grabbing_ledge:
+		stored_x_velocity = dir * walljumpspeed
 		return
 		
 	if abs(velocity.x) < startspeed:
@@ -138,6 +162,9 @@ func flip_hitboxes(dir):
 	if sign($LedgeRay.position.x) == -dir:
 		$LedgeRay.position.x *= -1
 		$LedgeRay.cast_to.x *= -1
+	if sign($MinDblJumpHeight.position.x) == -dir:
+		$MinDblJumpHeight.position.x *= -1
+		$MinDblJumpHeight.cast_to.x *= -1
 	return
 
 
