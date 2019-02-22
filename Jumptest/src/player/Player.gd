@@ -76,6 +76,18 @@ func get_directional_input(delta):
 				$Sprite.play("neutral")
 		velocity.x = 0 # TODO: replace with slowdown instead of outright stop?
 
+	# Double Jump
+	print(can_double_jump)
+	if Input.is_action_just_pressed("ui_up") and can_double_jump:
+		if not $MinDblJumpHeight.is_colliding():
+			emit_signal("doublejump")
+			velocity.y = -jump_strength
+			can_double_jump = false
+			if grabbing_ledge:
+				can_double_jump = true
+	if is_on_floor() or grabbing_ledge:
+		can_double_jump = true
+
 	# Jumping has higher priority than X movement
 	# We fastfall either at the apex of our jump, or when the button is let go
 	# to give the jump a more "weighty" feel
@@ -89,6 +101,7 @@ func get_directional_input(delta):
 			velocity.y = -jump_strength
 			if grabbing_ledge:
 				grabbing_ledge = false
+				can_double_jump = true
 				velocity.x = stored_x_velocity
 				velocity.y = -(jump_strength/1.2)
 
@@ -97,14 +110,7 @@ func get_directional_input(delta):
 			velocity.y += gravity * FASTFALL
 	
 
-	# Double Jump
-	if Input.is_action_just_pressed("ui_up") and can_double_jump:
-		if not $MinDblJumpHeight.is_colliding():
-			emit_signal("doublejump")
-			velocity.y = -jump_strength
-			can_double_jump = false
-	if is_on_floor() or grabbing_ledge:
-		can_double_jump = true
+
 
 
 
@@ -122,10 +128,10 @@ func get_directional_input(delta):
 
 func snap_to_corner(collider):
 	position.y = collider.global_position.y+5
-	if $Sprite.is_flipped_h():
-		position.x -= 1
-	else:
-		position.x += 1
+#	if $Sprite.is_flipped_h():
+#		position.x -= 1
+#	else:
+#		position.x += 1
 
 func facing_left():
 	return $Sprite.is_flipped_h()

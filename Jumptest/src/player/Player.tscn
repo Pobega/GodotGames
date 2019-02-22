@@ -61,7 +61,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 5.36306 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 1, 1 )
 scale = Vector2( 1.5, 1.5 )
@@ -83,7 +83,6 @@ maxfallspeed = 600
 
 frames = SubResource( 1 )
 animation = "neutral"
-frame = 1
 playing = true
 script = ExtResource( 14 )
 _sections_unfolded = [ "Material", "Visibility" ]
@@ -93,7 +92,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 modulate = Color( 0, 0.125823, 1, 1 )
 position = Vector2( 0.666667, 2.51218 )
 shape = SubResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Shuriken Origin" type="Position2D" parent="." index="2"]
 
@@ -111,7 +110,7 @@ _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="LedgeRay" type="RayCast2D" parent="." index="4"]
 
-position = Vector2( 7, -4.66668 )
+position = Vector2( 7.66667, -4.66668 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 2 )
