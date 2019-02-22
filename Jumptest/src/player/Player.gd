@@ -31,8 +31,6 @@ var grabbing_ledge = false
 var can_double_jump = true
 var stored_x_velocity
 
-var snap = Vector2()
-
 # Ensure we start with the neutral animation
 func _ready():
 	$Sprite.play("neutral")
@@ -123,7 +121,11 @@ func get_directional_input(delta):
 
 
 func snap_to_corner(collider):
-	snap.y = collider.global_position.y+4
+	position.y = collider.global_position.y+5
+	if $Sprite.is_flipped_h():
+		position.x -= 1
+	else:
+		position.x += 1
 
 func facing_left():
 	return $Sprite.is_flipped_h()
