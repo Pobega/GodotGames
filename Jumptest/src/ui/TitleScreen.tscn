@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 
 resource_name = "NinjaAppear"
 length = 3.0
@@ -41,7 +41,7 @@ tracks/1/keys = {
 "values": [ Vector2( -155, 204 ), Vector2( -155, 133 ) ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 
 size = 96
 use_mipmaps = false
@@ -49,7 +49,7 @@ use_filter = false
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 
 size = 32
 use_mipmaps = false
@@ -57,40 +57,33 @@ use_filter = false
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="TitleScreen" type="Node"]
+[node name="TitleScreen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
 [node name="LevelBackground" type="Node2D" parent="." index="0"]
 
-scale = Vector2( 1, 1 )
-
 [node name="Shurikens" type="Node2D" parent="LevelBackground" index="0"]
 
 editor/display_folded = true
-scale = Vector2( 1, 1 )
 
 [node name="Shuriken" type="Sprite" parent="LevelBackground/Shurikens" index="0"]
 
 position = Vector2( 129, 125 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="Shuriken2" type="Sprite" parent="LevelBackground/Shurikens" index="1"]
 
 position = Vector2( 317, 164 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="Shuriken3" type="Sprite" parent="LevelBackground/Shurikens" index="2"]
 
 position = Vector2( 81, 104 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="LevelBackground" index="1"]
 
-scale = Vector2( 1, 1 )
 mode = 0
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
@@ -113,7 +106,6 @@ _sections_unfolded = [ "Cell" ]
 [node name="Riceball" parent="LevelBackground" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 230, 172 )
-scale = Vector2( 1, 1 )
 
 [node name="UI" type="Control" parent="." index="1"]
 
@@ -172,7 +164,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/NinjaAppear = SubResource( 3 )
+anims/NinjaAppear = SubResource( 1 )
 blend_times = [  ]
 
 [node name="TitleName" type="Label" parent="UI/Container" index="1"]
@@ -190,7 +182,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 4
@@ -216,7 +208,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2

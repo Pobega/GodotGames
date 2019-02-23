@@ -12,7 +12,7 @@ func _input(event):
 		yield($FadeController/Fader, "animation_finished")
 		
 		# Change to level 1 scene
-		get_tree().change_scene("res://src/game/Screen.tscn")
+		get_tree().change_scene("res://src/game/levels/LevelOne.tscn")
 
 func disable_input(toggle):
 	get_tree().get_root().set_disable_input(toggle)
