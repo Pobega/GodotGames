@@ -1,17 +1,18 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://src/riceball/Riceball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://assets/tilesets/tiles.tres" type="TileSet" id=4]
 [ext_resource path="res://src/game/TileMap.gd" type="Script" id=5]
-[ext_resource path="res://assets/sound/music/rolemusi_-_03_-_The_White.ogg" type="AudioStream" id=6]
-[ext_resource path="res://src/game/BackgroundMusic.gd" type="Script" id=7]
-[ext_resource path="res://src/ui/Score.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/tilesets/hazards.tres" type="TileSet" id=6]
+[ext_resource path="res://assets/sound/music/rolemusi_-_03_-_The_White.ogg" type="AudioStream" id=7]
+[ext_resource path="res://src/game/BackgroundMusic.gd" type="Script" id=8]
+[ext_resource path="res://src/ui/Score.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=11]
 
-[node name="Screen" type="Node"]
+[node name="Screen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -53,7 +54,7 @@ identity = 5
 position = Vector2( 51, 132 )
 maxspeed = 120
 
-[node name="TileMap" type="TileMap" parent="." index="1" groups=[
+[node name="Tiles" type="TileMap" parent="." index="1" groups=[
 "tilemaps",
 ]]
 
@@ -73,25 +74,47 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 0, 12, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 11, 8, 0, 12, 8, 0, 13, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 17, 8, 0, 18, 8, 0, 19, 8, 0, 20, 8, 0, 21, 8, 0, 22, 8, 0, 23, 11, 0, 65536, 6, 0, 65559, 7, 0, 131072, 6, 0, 131095, 7, 0, 196608, 6, 0, 196631, 7, 0, 262144, 6, 0, 262167, 7, 0, 327680, 6, 0, 327703, 7, 0, 393216, 6, 0, 393239, 7, 0, 458752, 6, 0, 458775, 7, 0, 524288, 6, 0, 524311, 7, 0, 589824, 6, 0, 589847, 7, 0, 655360, 6, 0, 655383, 7, 0, 720896, 6, 0, 720919, 7, 0, 786432, 10, 0, 786433, 5, 0, 786434, 5, 0, 786435, 5, 0, 786436, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0, 786440, 5, 0, 786441, 5, 0, 786442, 5, 0, 786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 9, 0 )
+tile_data = PoolIntArray( 786432, 13, 0, 786433, 13, 0, 786434, 13, 0, 786435, 13, 0, 786436, 13, 0, 786437, 13, 0, 786438, 13, 0, 786439, 13, 0, 786440, 13, 0, 786441, 13, 0, 786442, 13, 0, 786443, 13, 0, 786444, 13, 0, 786445, 13, 0, 786446, 13, 0, 786447, 13, 0, 786448, 13, 0, 786449, 13, 0, 786450, 13, 0, 786451, 13, 0, 786452, 13, 0, 786453, 13, 0, 786454, 13, 0, 786455, 13, 0 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." index="2"]
+[node name="Hazards" type="TileMap" parent="." index="2" groups=[
+"tilemaps",
+]]
 
-stream = ExtResource( 6 )
+mode = 0
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Pause", "Transform", "Visibility", "Z Index" ]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 7 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="Score" parent="." index="3" instance=ExtResource( 8 )]
+[node name="Score" parent="." index="4" instance=ExtResource( 9 )]
 
-scale = Vector2( 1, 1 )
-
-[node name="Overlay" type="CanvasLayer" parent="." index="4"]
+[node name="Overlay" type="CanvasLayer" parent="." index="5"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -99,11 +122,11 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Pause Controller" parent="Overlay" index="0" instance=ExtResource( 9 )]
+[node name="Pause Controller" parent="Overlay" index="0" instance=ExtResource( 10 )]
 
 visible = false
 
-[node name="FadeController" parent="Overlay" index="1" instance=ExtResource( 10 )]
+[node name="FadeController" parent="Overlay" index="1" instance=ExtResource( 11 )]
 
 [connection signal="collect" from="Entities/Riceballs/Riceball" to="Score" method="_on_Riceball_collect"]
 

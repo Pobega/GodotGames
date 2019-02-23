@@ -359,7 +359,6 @@ shape = SubResource( 1 )
 [node name="Brick Block" type="Sprite" parent="Blocks" index="0"]
 
 editor/display_folded = true
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 64, 16, 16 )
@@ -409,119 +408,5 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blocks/Block/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-
-[node name="Spikes" type="Node2D" parent="." index="2"]
-
-editor/display_folded = true
-visible = false
-
-[node name="Spike Right" type="Sprite" parent="Spikes" index="0"]
-
-editor/display_folded = true
-visible = false
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 80, 32, 16, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Spikes/Spike Right" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike Right/StaticBody2D" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 8, -8, 1, -8, 1, 8, 8, 8 )
-
-[node name="Spike Left" type="Sprite" parent="Spikes" index="1"]
-
-editor/display_folded = true
-visible = false
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 64, 48, 16, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Spikes/Spike Left" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike Left/StaticBody2D" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( -8, -8, -1, -8, -1, 8, -8, 8, -8, -8 )
-
-[node name="Spike Top" type="Sprite" parent="Spikes" index="2"]
-
-editor/display_folded = true
-visible = false
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 64, 32, 16, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Spikes/Spike Top" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike Top/StaticBody2D" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 8, -8, 8, -1, -8, -1, -8, -8, 8, -8 )
-
-[node name="Spike Bottom" type="Sprite" parent="Spikes" index="3"]
-
-visible = false
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 80, 48, 16, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Spikes/Spike Bottom" index="0"]
-
-visible = false
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike Bottom/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -8, 8, 8, 8, 8, 1, -8, 1 )
 
 
