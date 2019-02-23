@@ -44,7 +44,7 @@ func handle_player_input(delta):
 
 	# After direction is handled and player sprite is flipped,
 	# we check for action keys
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("attack"):
 		do_shuriken_throw()
 	return
 
@@ -54,7 +54,7 @@ func get_directional_input(delta):
 	stored_x_velocity = 0
 	# Test for ledgegrabs first
 	if $LedgeRay.is_colliding() and sign(velocity.y) == 1 and not is_on_floor() and grabbing_ledge == false:
-		if not Input.is_action_pressed("ui_down"):
+		if not Input.is_action_pressed("crouch"):
 			snap_to_corner($LedgeRay.get_collider())
 			velocity.y=0
 			grabbing_ledge = true
@@ -62,23 +62,22 @@ func get_directional_input(delta):
 
 	# Test X movement next, lowest proiority sprite animations
 	# But we don't want to do horizontal flips if ledge grabbing
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		do_x_movement(MOVE_RIGHT)
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("move_left"):
 		do_x_movement(MOVE_LEFT)
 	else:
 		if is_on_floor():
-			if Input.is_action_pressed("ui_down"):
+			if Input.is_action_pressed("crouch"):
 				do_crouch()
-			elif Input.is_action_just_released("ui_down"):
+			elif Input.is_action_just_released("crouch"):
 				exit_crouch()
 			else:
 				$Sprite.play("neutral")
 		velocity.x = 0 # TODO: replace with slowdown instead of outright stop?
 
 	# Double Jump
-	print(can_double_jump)
-	if Input.is_action_just_pressed("ui_up") and can_double_jump:
+	if Input.is_action_just_pressed("jump") and can_double_jump:
 		if not $MinDblJumpHeight.is_colliding():
 			emit_signal("doublejump")
 			velocity.y = -jump_strength
@@ -91,11 +90,7 @@ func get_directional_input(delta):
 	# Jumping has higher priority than X movement
 	# We fastfall either at the apex of our jump, or when the button is let go
 	# to give the jump a more "weighty" feel
-	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_accept"):
-		if sign(velocity.y) == 1:
-			velocity.y += gravity * FASTFALL
-		else:
-			velocity.y += gravity
+	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() or grabbing_ledge:
 			emit_signal("jump")
 			velocity.y = -jump_strength
@@ -105,17 +100,19 @@ func get_directional_input(delta):
 				velocity.x = stored_x_velocity
 				velocity.y = -(jump_strength/1.2)
 
+	if Input.is_action_pressed("jump") and not grabbing_ledge:
+		if sign(velocity.y) == 1:
+			velocity.y += gravity * FASTFALL
+		else:
+			velocity.y += gravity
+
+
 	else:
 		if not grabbing_ledge:
 			velocity.y += gravity * FASTFALL
 	
 
-
-
-
-
-
-	if Input.is_action_pressed("ui_down") and grabbing_ledge:
+	if Input.is_action_pressed("crouch") and grabbing_ledge:
 		$Sprite.play("jump")
 		velocity.y = gravity * FASTFALL * 4
 		velocity.x = stored_x_velocity
@@ -128,10 +125,11 @@ func get_directional_input(delta):
 
 func snap_to_corner(collider):
 	position.y = collider.global_position.y+5
-#	if $Sprite.is_flipped_h():
-#		position.x -= 1
-#	else:
-#		position.x += 1
+	if $Sprite.is_flipped_h():
+		position.x -= 1
+	else:
+		position.x += 1
+	velocity = Vector2(0,0)
 
 func facing_left():
 	return $Sprite.is_flipped_h()

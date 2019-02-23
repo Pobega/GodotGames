@@ -14,7 +14,17 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 	return
 
+func stick_to_wall():
+	speed = 0
+	$AnimatedSprite.stop()
 
 func _on_Shuriken_body_entered(body):
+	var groups = body.get_groups()
+	for group in groups:
+		if group == "tilemaps":
+			stick_to_wall()
+			return
+		# TODO: group == enemies?
 	queue_free()
+
 	return

@@ -4,8 +4,6 @@
 [ext_resource path="res://assets/images/Misc/spr_star_0.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/Misc/spr_star_1.png" type="Texture" id=3]
 
-
-
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -19,9 +17,9 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6, 6 )
+extents = Vector2( 3, 3 )
 
-[node name="Shuriken" type="Area2D" index="0"]
+[node name="Shuriken" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -40,6 +38,7 @@ speed = 200
 
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
