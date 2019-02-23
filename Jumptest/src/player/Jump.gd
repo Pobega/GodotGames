@@ -1,9 +1,9 @@
 extends AudioStreamPlayer
 
 func _on_Player_jump():
-	play()
+	#play()
 	return
 
 func _on_Player_doublejump():
-	play()
+	#play()
 	return

@@ -78,7 +78,8 @@ func get_directional_input(delta):
 
 	# Double Jump
 	if Input.is_action_just_pressed("jump") and can_double_jump:
-		if sign(velocity.y) == 1 or abs(velocity.y) < jump_strength/10:
+		if sign(velocity.y) == 1 or abs(velocity.y) < jump_strength/3:
+			$Jump.play()
 			emit_signal("doublejump")
 			velocity.y = -jump_strength
 			can_double_jump = false
@@ -92,6 +93,7 @@ func get_directional_input(delta):
 	# to give the jump a more "weighty" feel
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() or grabbing_ledge:
+			$Jump.play()
 			emit_signal("jump")
 			velocity.y = -jump_strength
 			if grabbing_ledge:
