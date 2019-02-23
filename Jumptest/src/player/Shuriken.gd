@@ -27,7 +27,12 @@ func _on_Shuriken_body_entered(body):
 		if group == "tilemaps":
 			stick_to_wall()
 			return
+			
 		# TODO: group == enemies?
 	queue_free()
 
 	return
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	queue_free()
+	pass # replace with function body

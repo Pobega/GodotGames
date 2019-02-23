@@ -82,6 +82,8 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [connection signal="body_entered" from="." to="." method="_on_Shuriken_body_entered"]
 
+[connection signal="animation_finished" from="AnimatedSprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 
