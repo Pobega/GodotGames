@@ -12,7 +12,7 @@
 [ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=11]
 
-[node name="Screen" type="Node"]
+[node name="Screen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -113,8 +113,6 @@ bus = "Master"
 script = ExtResource( 8 )
 
 [node name="Score" parent="." index="4" instance=ExtResource( 9 )]
-
-scale = Vector2( 1, 1 )
 
 [node name="Overlay" type="CanvasLayer" parent="." index="5"]
 
