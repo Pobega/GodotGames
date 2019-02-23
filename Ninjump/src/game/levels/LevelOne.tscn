@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/game/levels/LevelOne.gd" type="Script" id=1]
 [ext_resource path="res://src/riceball/Riceball.tscn" type="PackedScene" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://src/game/TileMap.gd" type="Script" id=5]
 [ext_resource path="res://assets/sound/music/rolemusi_-_03_-_The_White.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/game/BackgroundMusic.gd" type="Script" id=7]
-[ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/ui/Score.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=10]
 
 [node name="Screen" type="Node" index="0"]
 
@@ -23,42 +24,29 @@ script = ExtResource( 1 )
 position = Vector2( 88, 91 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="Riceball6" parent="Entities/Riceballs" index="1" instance=ExtResource( 2 )]
+[node name="Riceball2" parent="Entities/Riceballs" index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 182, 68 )
+position = Vector2( 148.194, 79.5397 )
 _sections_unfolded = [ "Collision", "Transform" ]
+identity = 2
 
-[node name="Riceball7" parent="Entities/Riceballs" index="2" instance=ExtResource( 2 )]
+[node name="Riceball3" parent="Entities/Riceballs" index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 292, 76 )
+position = Vector2( 244.935, 36.2056 )
 _sections_unfolded = [ "Collision", "Transform" ]
+identity = 3
 
-[node name="Riceball2" parent="Entities/Riceballs" index="3" instance=ExtResource( 2 )]
+[node name="Riceball4" parent="Entities/Riceballs" index="3" instance=ExtResource( 2 )]
 
-position = Vector2( 348, 60 )
+position = Vector2( 350.275, 63.7819 )
 _sections_unfolded = [ "Collision", "Transform" ]
+identity = 4
 
-[node name="Riceball4" parent="Entities/Riceballs" index="4" instance=ExtResource( 2 )]
+[node name="Riceball5" parent="Entities/Riceballs" index="4" instance=ExtResource( 2 )]
 
-position = Vector2( 324, 60 )
+position = Vector2( 443.075, 43.7264 )
 _sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="Riceball5" parent="Entities/Riceballs" index="5" instance=ExtResource( 2 )]
-
-position = Vector2( 300, 60 )
-_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
-
-[node name="Riceball3" parent="Entities/Riceballs" index="6" instance=ExtResource( 2 )]
-
-position = Vector2( 324, 123 )
-
-[node name="Riceball8" parent="Entities/Riceballs" index="7" instance=ExtResource( 2 )]
-
-position = Vector2( 440, 93 )
-
-[node name="Riceball9" parent="Entities/Riceballs" index="8" instance=ExtResource( 2 )]
-
-position = Vector2( 440, 56 )
+identity = 5
 
 [node name="Player" parent="Entities" index="1" instance=ExtResource( 3 )]
 
@@ -99,7 +87,12 @@ mix_target = 0
 bus = "Master"
 script = ExtResource( 7 )
 
-[node name="Overlay" type="CanvasLayer" parent="." index="3"]
+[node name="Score" parent="." index="3" instance=ExtResource( 8 )]
+
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Overlay" type="CanvasLayer" parent="." index="4"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -107,10 +100,20 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Pause Controller" parent="Overlay" index="0" instance=ExtResource( 8 )]
+[node name="Pause Controller" parent="Overlay" index="0" instance=ExtResource( 9 )]
 
 visible = false
 
-[node name="FadeController" parent="Overlay" index="1" instance=ExtResource( 9 )]
+[node name="FadeController" parent="Overlay" index="1" instance=ExtResource( 10 )]
+
+[connection signal="collect" from="Entities/Riceballs/Riceball" to="Score" method="_on_Riceball_collect"]
+
+[connection signal="collect" from="Entities/Riceballs/Riceball2" to="Score" method="_on_Riceball_collect"]
+
+[connection signal="collect" from="Entities/Riceballs/Riceball3" to="Score" method="_on_Riceball_collect"]
+
+[connection signal="collect" from="Entities/Riceballs/Riceball4" to="Score" method="_on_Riceball_collect"]
+
+[connection signal="collect" from="Entities/Riceballs/Riceball5" to="Score" method="_on_Riceball_collect"]
 
 
