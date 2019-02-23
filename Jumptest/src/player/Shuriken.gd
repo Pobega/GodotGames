@@ -18,7 +18,6 @@ func stick_to_wall():
 	speed = 0
 	$AnimatedSprite.stop()
 	$AnimatedSprite/AnimationPlayer.play("blink_out")
-	yield($AnimatedSprite/AnimationPlayer, "animation_finished")
 	return
 
 func _on_Shuriken_body_entered(body):
