@@ -6,3 +6,6 @@ func _ready():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
 	if OS.get_name()=="HTML5":
 		OS.set_window_maximized(true)
+	
+	$FadeController/Fader.play("fade_in")
+	yield($FadeController/Fader, "animation_finished")

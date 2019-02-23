@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Ninjump"
-run/main_scene="res://src/game/Screen.tscn"
+run/main_scene="res://src/ui/TitleScreen.tscn"
 config/icon="res://assets/images/Ninja/jump.png"
 
 [display]

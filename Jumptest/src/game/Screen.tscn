@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/game/Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sound/music/rolemusi_-_03_-_The_White.ogg" type="AudioStream" id=7]
 [ext_resource path="res://src/game/BackgroundMusic.gd" type="Script" id=8]
 [ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -271,5 +272,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="Pause Controller" parent="Overlay" index="0" instance=ExtResource( 9 )]
 
 visible = false
+
+[node name="FadeController" parent="." index="5" instance=ExtResource( 10 )]
 
 
