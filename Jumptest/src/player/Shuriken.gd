@@ -17,6 +17,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 func stick_to_wall():
 	speed = 0
 	$AnimatedSprite.stop()
+	$AnimatedSprite/AnimationPlayer.play("blink_out")
+	yield($AnimatedSprite/AnimationPlayer, "animation_finished")
+	return
 
 func _on_Shuriken_body_entered(body):
 	var groups = body.get_groups()
