@@ -78,7 +78,7 @@ func get_directional_input(delta):
 
 	# Double Jump
 	if Input.is_action_just_pressed("jump") and can_double_jump:
-		if not $MinDblJumpHeight.is_colliding():
+		if sign(velocity.y) == 1 or abs(velocity.y) < jump_strength/10:
 			emit_signal("doublejump")
 			velocity.y = -jump_strength
 			can_double_jump = false
@@ -168,9 +168,6 @@ func flip_hitboxes(dir):
 	if sign($LedgeRay.position.x) == -dir:
 		$LedgeRay.position.x *= -1
 		$LedgeRay.cast_to.x *= -1
-	if sign($MinDblJumpHeight.position.x) == -dir:
-		$MinDblJumpHeight.position.x *= -1
-		$MinDblJumpHeight.cast_to.x *= -1
 	return
 
 

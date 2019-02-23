@@ -1,18 +1,18 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/Ninja/run1.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/Ninja/run2.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/Ninja/run3.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/Ninja/run1.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/Ninja/run2.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/Ninja/run3.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=13]
 [ext_resource path="res://src/player/Sprite.gd" type="Script" id=14]
 [ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=15]
 [ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=16]
@@ -22,34 +22,34 @@
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "ledgegrab",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "neutral",
-"speed": 3.0
+"name": "run",
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "ledgegrab",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "crouch",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -97,17 +97,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 position = Vector2( 8.82353, 1.76471 )
 
-[node name="MinDblJumpHeight" type="RayCast2D" parent="." index="3"]
-
-position = Vector2( 0.666664, 7 )
-scale = Vector2( 4, 1 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( 0, 10 )
-collision_mask = 33
-_sections_unfolded = [ "Material", "Transform", "Z Index" ]
-
-[node name="LedgeRay" type="RayCast2D" parent="." index="4"]
+[node name="LedgeRay" type="RayCast2D" parent="." index="3"]
 
 position = Vector2( 7.66667, -3 )
 enabled = true
@@ -117,7 +107,7 @@ collision_mask = 32
 script = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Jump" type="AudioStreamPlayer" parent="." index="5"]
+[node name="Jump" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 16 )
 volume_db = -10.0
@@ -127,7 +117,7 @@ mix_target = 0
 bus = "Master"
 script = ExtResource( 17 )
 
-[node name="Camera2D" parent="." index="6" instance=ExtResource( 18 )]
+[node name="Camera2D" parent="." index="5" instance=ExtResource( 18 )]
 
 [connection signal="doublejump" from="." to="Jump" method="_on_Player_doublejump"]
 
