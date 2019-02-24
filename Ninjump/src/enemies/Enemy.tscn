@@ -18,9 +18,9 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
+"loop": false,
 "name": "die",
-"speed": 5.0
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -28,7 +28,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 5, 6 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
+[node name="Enemy" type="KinematicBody2D" index="0" groups=[
 "enemies",
 ]]
 
