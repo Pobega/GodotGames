@@ -23,12 +23,6 @@ func _physics_process(delta):
 	pass
 
 func handle_collision(collision_count):
-	if collision_count > 0:
-		for i in range(collision_count):
-			var entity = get_slide_collision(i).collider
-			for group in entity.get_groups():
-				if group == "player":
-					entity.die()
 	if is_on_wall() or not $RayCast2D.is_colliding():
 		direction = direction * -1
 		$RayCast2D.position.x *= -1

@@ -205,19 +205,9 @@ func do_shuriken_throw():
 		shuriken.speed = -shuriken.speed
 	return
 
-func handle_collision(collision_count):
-	if collision_count > 0:
-		for i in range(collision_count):
-			var entity = get_slide_collision(i).collider
-			for group in entity.get_groups():
-				if group == "hazards" or group == "enemies":
-					die()
-
 func die():
-	$Hitbox.set_disabled(true)
 	no_input = true
 	emit_signal("death")
-
 
 func _physics_process(delta):
 	if not no_input:
@@ -225,6 +215,8 @@ func _physics_process(delta):
 		handle_player_input(delta)
 		# Process it all
 		velocity = move_and_slide(velocity, Vector2(0, -1))
-		handle_collision(get_slide_count())
 	else:
 		velocity = Vector2(0,0)
+
+func _on_HazardDetector_body_entered(body):
+	die()
