@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/Sensei/spr_boss_0.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/Sensei/spr_boss_1.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5, 6 )
+
+[node name="Enemy" type="KinematicBody2D" index="0" groups=[
+"enemies",
+]]
+
+input_pickable = false
+collision_layer = 68
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="2"]
+
+position = Vector2( 6, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 12 )
+collision_mask = 1
+
+

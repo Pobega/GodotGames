@@ -26,10 +26,11 @@ custom_solver_bias = 0.0
 extents = Vector2( 3, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Tilset" type="Node2D" index="0"]
+[node name="Tilset" type="Node2D"]
 
 [node name="Spike 1" type="Sprite" parent="." index="0"]
 
+editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -58,6 +59,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Spike 2" type="Sprite" parent="." index="1"]
 
+editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -85,6 +87,7 @@ shape = SubResource( 2 )
 
 [node name="Spike 3" type="Sprite" parent="." index="2"]
 
+editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -113,6 +116,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Spike 4" type="Sprite" parent="." index="3"]
 
+editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true

@@ -26,8 +26,8 @@ func _on_Shuriken_body_entered(body):
 		if group == "tilemaps":
 			stick_to_wall()
 			return
-			
-		# TODO: group == enemies?
+		if group == "enemies":
+			body.kill()
 	queue_free()
 
 	return

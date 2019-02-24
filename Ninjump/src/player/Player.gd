@@ -211,9 +211,12 @@ func handle_collision(collision_count):
 			var entity = get_slide_collision(i).collider
 			for group in entity.get_groups():
 				if group == "hazards" or group == "enemies":
-					print("Collided with: %s" % group)
-					no_input = true
-					emit_signal("death")
+					die()
+
+func die():
+	$Hitbox.set_disabled(true)
+	no_input = true
+	emit_signal("death")
 
 
 func _physics_process(delta):
