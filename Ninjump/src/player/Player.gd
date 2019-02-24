@@ -221,8 +221,7 @@ func _physics_process(delta):
 		# Handle input
 		handle_player_input(delta)
 		# Process it all
-		# Floor is -2 for better upward spike collision
-		velocity = move_and_slide(velocity, Vector2(0, -2))
+		velocity = move_and_slide(velocity, Vector2(0, -1))
 		handle_collision(get_slide_count())
 	else:
 		velocity = Vector2(0,0)

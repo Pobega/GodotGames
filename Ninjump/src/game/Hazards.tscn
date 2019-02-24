@@ -26,7 +26,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 3, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Tilset" type="Node2D"]
+[node name="Tilset" type="Node2D" index="0"]
 
 [node name="Spike 1" type="Sprite" parent="." index="0"]
 
@@ -42,8 +42,8 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Spike 1" index="0"]
 
 input_pickable = false
-collision_layer = 33
-collision_mask = 1
+collision_layer = 64
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -70,8 +70,8 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Spike 2" index="0"]
 
 input_pickable = false
-collision_layer = 33
-collision_mask = 1
+collision_layer = 64
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -85,7 +85,6 @@ shape = SubResource( 2 )
 
 [node name="Spike 3" type="Sprite" parent="." index="2"]
 
-editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -98,8 +97,8 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Spike 3" index="0"]
 
 input_pickable = false
-collision_layer = 33
-collision_mask = 1
+collision_layer = 64
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -114,7 +113,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Spike 4" type="Sprite" parent="." index="3"]
 
-editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -127,8 +125,8 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Spike 4" index="0"]
 
 input_pickable = false
-collision_layer = 33
-collision_mask = 1
+collision_layer = 64
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
