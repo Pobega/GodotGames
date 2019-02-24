@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=2]
@@ -17,10 +17,12 @@
 [ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=16]
 [ext_resource path="res://src/player/Sprite.gd" type="Script" id=17]
-[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=18]
-[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=19]
-[ext_resource path="res://src/player/Jump.gd" type="Script" id=20]
-[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/player/Hitbox.gd" type="Script" id=18]
+[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=19]
+[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=20]
+[ext_resource path="res://src/player/Jump.gd" type="Script" id=21]
+[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/player/Hurtbox.gd" type="Script" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -67,7 +69,13 @@ custom_solver_bias = 0.0
 extents = Vector2( 5, 5.36306 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" groups=[
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6, 6 )
+_sections_unfolded = [ "Resource" ]
+
+[node name="Player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
 
@@ -79,7 +87,7 @@ collision_layer = 2
 collision_mask = 77
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index" ]
 startspeed = 30
 maxspeed = 100
 walljumpspeed = 70
@@ -99,10 +107,11 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="1"]
 
-modulate = Color( 0, 0.125823, 1, 1 )
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0.666667, 2.51218 )
 shape = SubResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+script = ExtResource( 18 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Shuriken Origin" type="Position2D" parent="." index="2"]
 
@@ -115,33 +124,61 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 32
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Jump" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 19 )
+stream = ExtResource( 20 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
-[node name="Camera2D" parent="." index="5" instance=ExtResource( 21 )]
+[node name="Camera2D" parent="." index="5" instance=ExtResource( 22 )]
 
 smoothing_speed = 20.0
+
+[node name="HazardDetector" type="Area2D" parent="." index="6"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 68
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="HazardDetector" index="0"]
+
+modulate = Color( 0.475348, 0.541135, 0.998201, 1 )
+position = Vector2( 0.666667, 2.51218 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 3 )
+script = ExtResource( 23 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[connection signal="death" from="." to="HazardDetector/Hurtbox" method="_on_Player_death"]
+
+[connection signal="death" from="." to="Hitbox" method="_on_Player_death"]
 
 [connection signal="death" from="." to="Sprite" method="_on_Player_death"]
 
 [connection signal="doublejump" from="." to="Jump" method="_on_Player_doublejump"]
 
-[connection signal="jump" from="." to="Sprite" method="_on_Player_jump"]
-
 [connection signal="jump" from="." to="Jump" method="_on_Player_jump"]
+
+[connection signal="jump" from="." to="Sprite" method="_on_Player_jump"]
 
 [connection signal="ledgegrab" from="." to="Sprite" method="_on_Player_ledgegrab"]
 
 [connection signal="run" from="." to="Sprite" method="_on_Player_run"]
+
+[connection signal="body_entered" from="HazardDetector" to="." method="_on_HazardDetector_body_entered"]
 
 

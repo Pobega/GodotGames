@@ -28,7 +28,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 5, 6 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
+[node name="Enemy" type="KinematicBody2D" index="0" groups=[
 "enemies",
 ]]
 
