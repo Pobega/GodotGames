@@ -3,6 +3,8 @@ extends Camera2D
 func _ready():
 	limit_top = 0
 	limit_left = 0
+	limit_right = 0
+	limit_bottom = 0
 	var tilemaps = get_tree().get_nodes_in_group("tilemaps")
 	for tilemap in tilemaps:
 		if tilemap is TileMap:
