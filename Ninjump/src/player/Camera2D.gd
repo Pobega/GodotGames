@@ -10,8 +10,3 @@ func _ready():
 			limit_right = max(used_level_rect_px.x, limit_right)
 			limit_bottom = min(used_level_rect_px.y, limit_bottom)
 	return
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

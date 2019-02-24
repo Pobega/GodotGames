@@ -202,9 +202,17 @@ func do_shuriken_throw():
 		shuriken.speed = -shuriken.speed
 	return
 
+func handle_collision(collision_count):
+	if collision_count > 0:
+		for i in range(collision_count):
+			var entity = get_slide_collision(i).collider
+			for group in entity.get_groups():
+				if group == "hazards":
+					print("ouch")
 
 func _physics_process(delta):
 	# Handle input
 	handle_player_input(delta)
 	# Process it all
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	handle_collision(get_slide_count())

@@ -99,7 +99,6 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray(  )
-script = ExtResource( 5 )
 _sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." index="3"]
@@ -113,6 +112,8 @@ bus = "Master"
 script = ExtResource( 8 )
 
 [node name="Score" parent="." index="4" instance=ExtResource( 9 )]
+
+scale = Vector2( 1, 1 )
 
 [node name="Overlay" type="CanvasLayer" parent="." index="5"]
 
