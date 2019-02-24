@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Sensei/spr_boss_0.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/Sensei/spr_boss_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/Misc/spr_smoke_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/Misc/spr_smoke_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/Misc/spr_smoke_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/Misc/spr_smoke_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/Misc/spr_smoke_4.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -10,6 +15,11 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "die",
 "speed": 5.0
 } ]
 
@@ -33,6 +43,7 @@ _sections_unfolded = [ "Collision", "collision" ]
 
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -46,5 +57,7 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 1
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 
 
