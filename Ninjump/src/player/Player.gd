@@ -211,6 +211,7 @@ func handle_collision(collision_count):
 			var entity = get_slide_collision(i).collider
 			for group in entity.get_groups():
 				if group == "hazards" or group == "enemies":
+					print("Collided with: %s" % group)
 					no_input = true
 					emit_signal("death")
 
@@ -220,7 +221,8 @@ func _physics_process(delta):
 		# Handle input
 		handle_player_input(delta)
 		# Process it all
-		velocity = move_and_slide(velocity, Vector2(0, -1))
+		# Floor is -2 for better upward spike collision
+		velocity = move_and_slide(velocity, Vector2(0, -2))
 		handle_collision(get_slide_count())
 	else:
 		velocity = Vector2(0,0)
