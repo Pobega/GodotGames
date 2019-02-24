@@ -5,32 +5,31 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 4 )
+extents = Vector2( 6, 3 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 4 )
+extents = Vector2( 6, 3 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 8 )
+extents = Vector2( 3, 6 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 8 )
+extents = Vector2( 3, 6 )
 _sections_unfolded = [ "Resource" ]
 
 [node name="Tilset" type="Node2D"]
 
 [node name="Spike 1" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -53,12 +52,12 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike 1/StaticBody2D" index="0"]
 
-position = Vector2( 0, 4 )
+position = Vector2( 0, 5 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Spike 2" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
@@ -81,7 +80,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike 2/StaticBody2D" index="0"]
 
-position = Vector2( 0, -4 )
+position = Vector2( 0, -5 )
 shape = SubResource( 2 )
 
 [node name="Spike 3" type="Sprite" parent="." index="2"]
@@ -109,11 +108,14 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike 3/StaticBody2D" index="0"]
 
-position = Vector2( -4, 0 )
+position = Vector2( -5, 0 )
 shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Spike 4" type="Sprite" parent="." index="3"]
 
+editor/display_folded = true
+visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 32, 16, 16 )
@@ -135,7 +137,8 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike 4/StaticBody2D" index="0"]
 
-position = Vector2( 4, 0 )
+position = Vector2( 5, 0 )
 shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
 
 

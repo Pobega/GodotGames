@@ -128,9 +128,9 @@ func get_directional_input(delta):
 func snap_to_corner(collider):
 	position.y = collider.global_position.y+5
 	if $Sprite.is_flipped_h():
-		position.x -= 1
+		position.x -= 3
 	else:
-		position.x += 1
+		position.x += 3
 	velocity = Vector2(0,0)
 
 func facing_left():
@@ -209,6 +209,7 @@ func handle_collision(collision_count):
 			for group in entity.get_groups():
 				if group == "hazards":
 					print("ouch")
+					get_tree().reload_current_scene()
 
 func _physics_process(delta):
 	# Handle input

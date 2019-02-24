@@ -56,10 +56,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6, 5.36306 )
+extents = Vector2( 5, 5.36306 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 1, 1 )
 scale = Vector2( 1.5, 1.5 )
@@ -99,7 +99,7 @@ position = Vector2( 8.82353, 1.76471 )
 
 [node name="LedgeRay" type="RayCast2D" parent="." index="3"]
 
-position = Vector2( 7.66667, -3 )
+position = Vector2( 7, -3 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
