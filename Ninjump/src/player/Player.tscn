@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=2]
@@ -8,16 +8,19 @@
 [ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=13]
-[ext_resource path="res://src/player/Sprite.gd" type="Script" id=14]
-[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=15]
-[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=16]
-[ext_resource path="res://src/player/Jump.gd" type="Script" id=17]
-[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/images/Ninja/death1.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/Ninja/death2.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/Ninja/death3.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=16]
+[ext_resource path="res://src/player/Sprite.gd" type="Script" id=17]
+[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=18]
+[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=19]
+[ext_resource path="res://src/player/Jump.gd" type="Script" id=20]
+[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -37,17 +40,22 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "death",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "neutral",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "crouch",
 "speed": 3.0
@@ -59,7 +67,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 5, 5.36306 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 1, 1 )
 scale = Vector2( 1.5, 1.5 )
@@ -81,9 +89,8 @@ maxfallspeed = 600
 
 frames = SubResource( 1 )
 animation = "neutral"
-frame = 1
 playing = true
-script = ExtResource( 14 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="1"]
@@ -104,20 +111,22 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 32
-script = ExtResource( 15 )
+script = ExtResource( 18 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Jump" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 16 )
+stream = ExtResource( 19 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 17 )
+script = ExtResource( 20 )
 
-[node name="Camera2D" parent="." index="5" instance=ExtResource( 18 )]
+[node name="Camera2D" parent="." index="5" instance=ExtResource( 21 )]
+
+[connection signal="death" from="." to="Sprite" method="_on_Player_death"]
 
 [connection signal="doublejump" from="." to="Jump" method="_on_Player_doublejump"]
 

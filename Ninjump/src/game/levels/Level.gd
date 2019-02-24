@@ -9,3 +9,8 @@ func _ready():
 	
 	$Overlay/FadeController/Fader.play("fade_in")
 	yield($Overlay/FadeController/Fader, "animation_finished")
+
+func _on_Player_death():
+	$Overlay/FadeController/Fader.play("death_fade_out")
+	yield($Overlay/FadeController/Fader, "animation_finished")
+	get_tree().reload_current_scene()

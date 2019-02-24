@@ -2,12 +2,13 @@ extends AnimatedSprite
 
 func _on_Player_jump():
 	play("jump")
-	return
 
 func _on_Player_run():
 	play("run")
-	return
 
 func _on_Player_ledgegrab():
 	play("ledgegrab")
-	pass # replace with function body
+
+func _on_Player_death():
+	play("death")
+	#get_tree().reload_current_scene()

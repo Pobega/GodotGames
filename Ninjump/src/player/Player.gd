@@ -4,6 +4,7 @@ signal jump
 signal run
 signal ledgegrab
 signal doublejump
+signal death
 
 # Horizontal movement
 export(int, 200) var startspeed = 30
@@ -30,6 +31,8 @@ var velocity = Vector2()
 var grabbing_ledge = false
 var can_double_jump = true
 var stored_x_velocity
+
+var no_input = false
 
 # Ensure we start with the neutral animation
 func _ready():
@@ -207,13 +210,17 @@ func handle_collision(collision_count):
 		for i in range(collision_count):
 			var entity = get_slide_collision(i).collider
 			for group in entity.get_groups():
-				if group == "hazards":
-					print("ouch")
-					get_tree().reload_current_scene()
+				if group == "hazards" or group == "enemies":
+					no_input = true
+					emit_signal("death")
+
 
 func _physics_process(delta):
-	# Handle input
-	handle_player_input(delta)
-	# Process it all
-	velocity = move_and_slide(velocity, Vector2(0, -1))
-	handle_collision(get_slide_count())
+	if not no_input:
+		# Handle input
+		handle_player_input(delta)
+		# Process it all
+		velocity = move_and_slide(velocity, Vector2(0, -1))
+		handle_collision(get_slide_count())
+	else:
+		velocity = Vector2(0,0)

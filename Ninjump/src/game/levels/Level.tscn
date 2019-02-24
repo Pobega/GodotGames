@@ -114,6 +114,7 @@ script = ExtResource( 8 )
 [node name="Score" parent="." index="4" instance=ExtResource( 9 )]
 
 scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Overlay" type="CanvasLayer" parent="." index="5"]
 
@@ -138,5 +139,7 @@ visible = false
 [connection signal="collect" from="Entities/Riceballs/Riceball4" to="Score" method="_on_Riceball_collect"]
 
 [connection signal="collect" from="Entities/Riceballs/Riceball5" to="Score" method="_on_Riceball_collect"]
+
+[connection signal="death" from="Entities/Player" to="." method="_on_Player_death"]
 
 
