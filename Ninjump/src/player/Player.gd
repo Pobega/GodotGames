@@ -172,7 +172,9 @@ func flip_hitboxes(dir):
 		$"Shuriken Origin".position.x *= -1
 	if sign($LedgeRay.position.x) == -dir:
 		$LedgeRay.position.x *= -1
-		$LedgeRay.cast_to.x *= -1
+#		$LedgeRay.cast_to.x *= -1
+	if sign($HazardDetector/Hurtbox.position.x) == -dir:
+		$HazardDetector/Hurtbox.position.x *= -1
 	return
 
 
