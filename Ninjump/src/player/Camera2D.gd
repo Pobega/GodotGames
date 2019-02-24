@@ -4,12 +4,11 @@ func _ready():
 	limit_top = 0
 	limit_left = 0
 	var tilemaps = get_tree().get_nodes_in_group("tilemaps")
-	print(tilemaps)
 	for tilemap in tilemaps:
 		if tilemap is TileMap:
-			var used = tilemap.get_used_rect()
-			limit_right = used.end.x * tilemap.cell_size.x
-			limit_bottom = used.end.y * tilemap.cell_size.y
+			var used_level_rect_px = tilemap.get_used_rect().end * tilemap.cell_size
+			limit_right = max(used_level_rect_px.x, limit_right)
+			limit_bottom = min(used_level_rect_px.y, limit_bottom)
 	return
 
 #func _process(delta):
