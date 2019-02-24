@@ -17,6 +17,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 func stick_to_wall():
 	speed = 0
 	$AnimatedSprite.stop()
+	$CollisionShape2D.set_disabled(true)
 	$AnimatedSprite/AnimationPlayer.play("blink_out")
 	return
 

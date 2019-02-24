@@ -38,7 +38,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 3, 3 )
 
-[node name="Shuriken" type="Area2D"]
+[node name="Shuriken" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
