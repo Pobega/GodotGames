@@ -13,9 +13,9 @@
 [ext_resource path="res://assets/images/Ninja/death3.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=16]
 [ext_resource path="res://src/player/Sprite.gd" type="Script" id=17]
 [ext_resource path="res://src/player/Hitbox.gd" type="Script" id=18]
 [ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=19]
@@ -52,15 +52,15 @@ animations = [ {
 "name": "neutral",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "wallslide",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "crouch",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "wallslide",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -75,7 +75,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" index="0" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
 
@@ -157,7 +157,6 @@ _sections_unfolded = [ "Collision" ]
 
 modulate = Color( 0.0234534, 0.678416, 0.861616, 0.812549 )
 position = Vector2( 0.666667, 2.51218 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 script = ExtResource( 23 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -170,9 +169,9 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [connection signal="doublejump" from="." to="Jump" method="_on_Player_doublejump"]
 
-[connection signal="jump" from="." to="Jump" method="_on_Player_jump"]
-
 [connection signal="jump" from="." to="Sprite" method="_on_Player_jump"]
+
+[connection signal="jump" from="." to="Jump" method="_on_Player_jump"]
 
 [connection signal="ledgegrab" from="." to="Sprite" method="_on_Player_ledgegrab"]
 
