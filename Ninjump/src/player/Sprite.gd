@@ -11,4 +11,6 @@ func _on_Player_ledgegrab():
 
 func _on_Player_death():
 	play("death")
-	#get_tree().reload_current_scene()
+
+func _on_Player_doublejump():
+	play("doublejump")
