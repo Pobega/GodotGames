@@ -75,7 +75,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 5, 5.36306 )
+extents = Vector2( 5, 5.5 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=3]
