@@ -6,7 +6,7 @@
 [ext_resource path="res://src/enemies/cannons/CannonDown.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/enemies/cannons/CannonUp.tscn" type="PackedScene" id=5]
 
-[node name="Screen" instance=ExtResource( 1 )]
+[node name="Screen" index="0" instance=ExtResource( 1 )]
 
 [node name="Riceball" parent="Entities/Riceballs" index="0"]
 
@@ -30,7 +30,7 @@ position = Vector2( 414, 37 )
 
 [node name="Player" parent="Entities" index="1"]
 
-position = Vector2( 392, 178 )
+position = Vector2( 32, 179 )
 
 [node name="Enemy" parent="Entities" index="2" instance=ExtResource( 2 )]
 
@@ -63,13 +63,5 @@ tile_data = PoolIntArray( 0, 12, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0,
 [node name="Hazards" parent="." index="2"]
 
 tile_data = PoolIntArray( 262172, 3, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0 )
-
-[node name="Score" parent="." index="4"]
-
-scale = Vector2( 1, 1 )
-
-[node name="Overlay" parent="." index="5"]
-
-scale = Vector2( 1, 1 )
 
 
