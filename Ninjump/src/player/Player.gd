@@ -222,3 +222,6 @@ func _physics_process(delta):
 
 func _on_HazardDetector_body_entered(body):
 	die()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	die()

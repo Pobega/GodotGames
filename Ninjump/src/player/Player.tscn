@@ -84,7 +84,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" index="0" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
 
@@ -109,7 +109,6 @@ maxfallspeed = 600
 
 frames = SubResource( 1 )
 animation = "neutral"
-frame = 1
 playing = true
 script = ExtResource( 21 )
 _sections_unfolded = [ "Material", "Visibility" ]
@@ -171,11 +170,17 @@ shape = SubResource( 3 )
 script = ExtResource( 27 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="7"]
+
+position = Vector2( 0.769231, 2.30769 )
+scale = Vector2( 0.538462, 0.538462 )
+rect = Rect2( -10, -10, 20, 20 )
+
 [connection signal="death" from="." to="HazardDetector/Hurtbox" method="_on_Player_death"]
 
-[connection signal="death" from="." to="Sprite" method="_on_Player_death"]
-
 [connection signal="death" from="." to="Hitbox" method="_on_Player_death"]
+
+[connection signal="death" from="." to="Sprite" method="_on_Player_death"]
 
 [connection signal="doublejump" from="." to="Jump" method="_on_Player_doublejump"]
 
@@ -190,5 +195,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 [connection signal="run" from="." to="Sprite" method="_on_Player_run"]
 
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_HazardDetector_body_entered"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 
