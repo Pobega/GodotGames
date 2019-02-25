@@ -12,7 +12,7 @@
 [ext_resource path="res://src/game/Pause Controller.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/ui/FadeController.tscn" type="PackedScene" id=11]
 
-[node name="Screen" type="Node"]
+[node name="Screen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -74,7 +74,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 786432, 13, 0, 786433, 13, 0, 786434, 13, 0, 786435, 13, 0, 786436, 13, 0, 786437, 13, 0, 786438, 13, 0, 786439, 13, 0, 786440, 13, 0, 786441, 13, 0, 786442, 13, 0, 786443, 13, 0, 786444, 13, 0, 786445, 13, 0, 786446, 13, 0, 786447, 13, 0, 786448, 13, 0, 786449, 13, 0, 786450, 13, 0, 786451, 13, 0, 786452, 13, 0, 786453, 13, 0, 786454, 13, 0, 786455, 13, 0 )
+tile_data = PoolIntArray( 786432, 13, 0, 786433, 13, 0, 786434, 13, 0, 786435, 13, 0, 786436, 13, 0, 786437, 13, 0, 786439, 13, 0, 786440, 13, 0, 786441, 13, 0, 786442, 13, 0, 786443, 13, 0, 786444, 13, 0, 786445, 13, 0, 786446, 13, 0, 786447, 13, 0, 786448, 13, 0, 786449, 13, 0, 786450, 13, 0, 786451, 13, 0, 786452, 13, 0, 786453, 13, 0, 786454, 13, 0, 786455, 13, 0 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Cell", "Collision", "Material", "Occluder", "Pause", "Transform", "Visibility", "Z Index" ]
 
@@ -112,8 +112,6 @@ bus = "Master"
 script = ExtResource( 8 )
 
 [node name="Score" parent="." index="4" instance=ExtResource( 9 )]
-
-scale = Vector2( 1, 1 )
 
 [node name="Overlay" type="CanvasLayer" parent="." index="5"]
 
