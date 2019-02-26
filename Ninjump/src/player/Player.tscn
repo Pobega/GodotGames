@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=2]
@@ -15,18 +15,20 @@
 [ext_resource path="res://assets/images/Ninja/death1.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/Ninja/death2.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/Ninja/death3.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=20]
 [ext_resource path="res://src/player/Sprite.gd" type="Script" id=21]
 [ext_resource path="res://src/player/Hitbox.gd" type="Script" id=22]
 [ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=23]
 [ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=24]
 [ext_resource path="res://src/player/Jump.gd" type="Script" id=25]
-[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=26]
-[ext_resource path="res://src/player/Hurtbox.gd" type="Script" id=27]
+[ext_resource path="res://assets/sound/sfx/player/game_over.wav" type="AudioStream" id=26]
+[ext_resource path="res://src/player/Death.gd" type="Script" id=27]
+[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/player/Hurtbox.gd" type="Script" id=29]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -56,19 +58,19 @@ animations = [ {
 "name": "death",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "crouch",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "crouch",
 "speed": 3.0
 } ]
 
@@ -84,7 +86,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 6, 6 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" groups=[
+[node name="Player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
 
@@ -145,11 +147,21 @@ mix_target = 0
 bus = "Master"
 script = ExtResource( 25 )
 
-[node name="Camera2D" parent="." index="5" instance=ExtResource( 26 )]
+[node name="Death" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 26 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+script = ExtResource( 27 )
+
+[node name="Camera2D" parent="." index="6" instance=ExtResource( 28 )]
 
 smoothing_speed = 20.0
 
-[node name="HazardDetector" type="Area2D" parent="." index="6"]
+[node name="HazardDetector" type="Area2D" parent="." index="7"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -167,10 +179,10 @@ _sections_unfolded = [ "Collision" ]
 modulate = Color( 0.0234534, 0.678416, 0.861616, 0.812549 )
 position = Vector2( 0.666667, 2.51218 )
 shape = SubResource( 3 )
-script = ExtResource( 27 )
+script = ExtResource( 29 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="7"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="8"]
 
 position = Vector2( 0.769231, 2.30769 )
 scale = Vector2( 0.538462, 0.538462 )
@@ -179,6 +191,8 @@ rect = Rect2( -10, -10, 20, 20 )
 [connection signal="death" from="." to="HazardDetector/Hurtbox" method="_on_Player_death"]
 
 [connection signal="death" from="." to="Hitbox" method="_on_Player_death"]
+
+[connection signal="death" from="." to="Death" method="_on_Player_death"]
 
 [connection signal="death" from="." to="Sprite" method="_on_Player_death"]
 

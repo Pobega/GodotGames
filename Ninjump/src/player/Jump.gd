@@ -4,9 +4,9 @@ extends AudioStreamPlayer
 # the HTML5 export due to a lack of threading.
 
 func _on_Player_jump():
-	#play()
+	play()
 	return
 
 func _on_Player_doublejump():
-	#play()
+	play()
 	return
