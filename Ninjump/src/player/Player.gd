@@ -47,7 +47,7 @@ func handle_player_input(delta):
 
 	# After direction is handled and player sprite is flipped,
 	# we check for action keys
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and not grabbing_ledge:
 		do_shuriken_throw()
 	return
 
