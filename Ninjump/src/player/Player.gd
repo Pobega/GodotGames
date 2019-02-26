@@ -129,9 +129,9 @@ func get_directional_input(delta):
 func snap_to_corner(collider):
 	position.y = collider.global_position.y+5
 	if $Sprite.is_flipped_h():
-		position.x -= 3
+		position.x -= 2
 	else:
-		position.x += 3
+		position.x += 2
 	velocity = Vector2(0,0)
 
 func facing_left():
