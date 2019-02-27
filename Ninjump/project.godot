@@ -12,6 +12,8 @@ config_version=3
 
 config/name="Ninjump"
 run/main_scene="res://src/ui/TitleScreen.tscn"
+boot_splash/image="res://splash.png"
+boot_splash/fullsize=false
 config/icon="res://assets/images/Ninja/jump.png"
 
 [display]
