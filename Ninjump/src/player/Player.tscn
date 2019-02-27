@@ -1,34 +1,33 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Ninja/jump.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/Ninja/run1.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/Ninja/run2.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/Ninja/run3.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/Ninja/run3.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/Ninja/run4.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/Ninja/run5.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/Ninja/double_jump1.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/Ninja/double_jump2.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/Ninja/double_jump3.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/Ninja/double_jump4.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/Ninja/death1.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/Ninja/death2.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/Ninja/death3.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=20]
-[ext_resource path="res://src/player/Sprite.gd" type="Script" id=21]
-[ext_resource path="res://src/player/Hitbox.gd" type="Script" id=22]
-[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=23]
-[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=24]
-[ext_resource path="res://src/player/Jump.gd" type="Script" id=25]
-[ext_resource path="res://assets/sound/sfx/player/game_over.wav" type="AudioStream" id=26]
-[ext_resource path="res://src/player/Death.gd" type="Script" id=27]
-[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/player/Hurtbox.gd" type="Script" id=29]
+[ext_resource path="res://assets/images/Ninja/ledgegrab.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/Ninja/double_jump1.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/Ninja/double_jump2.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/Ninja/double_jump3.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/Ninja/double_jump4.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/Ninja/death1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/Ninja/death2.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/Ninja/death3.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/Ninja/wallslide.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/Ninja/neutral1.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/Ninja/neutral2.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/Ninja/crouch1.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/Ninja/crouch2.png" type="Texture" id=19]
+[ext_resource path="res://src/player/Sprite.gd" type="Script" id=20]
+[ext_resource path="res://src/player/Hitbox.gd" type="Script" id=21]
+[ext_resource path="res://src/player/LedgeRay.gd" type="Script" id=22]
+[ext_resource path="res://assets/sound/sfx/player/jump0.wav" type="AudioStream" id=23]
+[ext_resource path="res://src/player/Jump.gd" type="Script" id=24]
+[ext_resource path="res://assets/sound/sfx/player/game_over.wav" type="AudioStream" id=25]
+[ext_resource path="res://src/player/Death.gd" type="Script" id=26]
+[ext_resource path="res://src/player/PlayerCamera.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/player/Hurtbox.gd" type="Script" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -38,37 +37,37 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "ledgegrab",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "doublejump",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ) ],
 "loop": false,
 "name": "death",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "neutral",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "crouch",
 "speed": 3.0
@@ -111,8 +110,9 @@ maxfallspeed = 600
 
 frames = SubResource( 1 )
 animation = "neutral"
+frame = 1
 playing = true
-script = ExtResource( 21 )
+script = ExtResource( 20 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="1"]
@@ -120,7 +120,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 modulate = Color( 0.00378784, 0.998201, 0.00480447, 1 )
 position = Vector2( 0.666667, 2.51218 )
 shape = SubResource( 2 )
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Shuriken Origin" type="Position2D" parent="." index="2"]
@@ -134,30 +134,30 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 32
-script = ExtResource( 23 )
+script = ExtResource( 22 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Jump" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 24 )
+stream = ExtResource( 23 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 25 )
+script = ExtResource( 24 )
 
 [node name="Death" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 26 )
+stream = ExtResource( 25 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 27 )
+script = ExtResource( 26 )
 
-[node name="Camera2D" parent="." index="6" instance=ExtResource( 28 )]
+[node name="Camera2D" parent="." index="6" instance=ExtResource( 27 )]
 
 smoothing_speed = 20.0
 
@@ -179,7 +179,7 @@ _sections_unfolded = [ "Collision" ]
 modulate = Color( 0.0234534, 0.678416, 0.861616, 0.812549 )
 position = Vector2( 0.666667, 2.51218 )
 shape = SubResource( 3 )
-script = ExtResource( 29 )
+script = ExtResource( 28 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="8"]
@@ -188,11 +188,11 @@ position = Vector2( 0.769231, 2.30769 )
 scale = Vector2( 0.538462, 0.538462 )
 rect = Rect2( -10, -10, 20, 20 )
 
+[connection signal="death" from="." to="Death" method="_on_Player_death"]
+
 [connection signal="death" from="." to="HazardDetector/Hurtbox" method="_on_Player_death"]
 
 [connection signal="death" from="." to="Hitbox" method="_on_Player_death"]
-
-[connection signal="death" from="." to="Death" method="_on_Player_death"]
 
 [connection signal="death" from="." to="Sprite" method="_on_Player_death"]
 
