@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 7, 6 )
 
-[node name="CannonBase" type="StaticBody2D"]
+[node name="CannonBase" type="StaticBody2D" index="0"]
 
 position = Vector2( 55, 21 )
 input_pickable = false
@@ -25,7 +25,8 @@ __meta__ = {
 }
 vertical = 0
 horizontal = 0
-wait_time = 3.0
+wait_time = 2.0
+first_shot_time = 1.0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -42,11 +43,20 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="Position2D" type="Position2D" parent="." index="3"]
+[node name="FirstShotTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="Position2D" type="Position2D" parent="." index="4"]
 
 position = Vector2( 0, 8 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+
+[connection signal="timeout" from="FirstShotTimer" to="." method="_on_FirstShotTImer_timeout"]
 
 
