@@ -3,7 +3,7 @@
 [ext_resource path="res://src/ui/Score.gd" type="Script" id=1]
 [ext_resource path="res://src/ui/RiceballHudIcon.tscn" type="PackedScene" id=2]
 
-[node name="Score" type="CanvasLayer"]
+[node name="Score" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -46,36 +46,36 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
 [node name="RiceballhudIcon5" parent="Container/Riceballs" index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 66.6667, 6 )
+position = Vector2( 71.3334, 6 )
 identity = 5
 
 [node name="RiceballhudIcon4" parent="Container/Riceballs" index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 71.3333, 6 )
+position = Vector2( 75.9999, 6 )
 identity = 4
 
 [node name="RiceballhudIcon3" parent="Container/Riceballs" index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 76, 6 )
+position = Vector2( 80.6666, 6 )
 identity = 3
 
 [node name="RiceballhudIcon2" parent="Container/Riceballs" index="3" instance=ExtResource( 2 )]
 
-position = Vector2( 80.6666, 6 )
+position = Vector2( 85.3333, 6 )
 identity = 2
 
 [node name="RiceballhudIcon" parent="Container/Riceballs" index="4" instance=ExtResource( 2 )]
 
-position = Vector2( 85.3333, 6 )
+position = Vector2( 89.9999, 6 )
+
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon2" method="_on_Score_collected"]
 
 [connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon3" method="_on_Score_collected"]
 
 [connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon4" method="_on_Score_collected"]
 
-[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon2" method="_on_Score_collected"]
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon5" method="_on_Score_collected"]
 
 [connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon" method="_on_Score_collected"]
-
-[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon5" method="_on_Score_collected"]
 
 
