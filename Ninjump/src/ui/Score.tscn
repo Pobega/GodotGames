@@ -44,42 +44,38 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
-[node name="RiceballHudIcon" parent="Container/Riceballs" index="0" instance=ExtResource( 2 )]
+[node name="RiceballhudIcon5" parent="Container/Riceballs" index="0" instance=ExtResource( 2 )]
 
-identity = 1
-
-[node name="RiceballHudIcon2" parent="Container/Riceballs" index="1" instance=ExtResource( 2 )]
-
-margin_left = 20.0
-margin_right = 36.0
-identity = 2
-
-[node name="RiceballHudIcon3" parent="Container/Riceballs" index="2" instance=ExtResource( 2 )]
-
-margin_left = 40.0
-margin_right = 56.0
-identity = 3
-
-[node name="RiceballHudIcon4" parent="Container/Riceballs" index="3" instance=ExtResource( 2 )]
-
-margin_left = 60.0
-margin_right = 76.0
-identity = 4
-
-[node name="RiceballHudIcon5" parent="Container/Riceballs" index="4" instance=ExtResource( 2 )]
-
-margin_left = 80.0
-margin_right = 96.0
+position = Vector2( 66.6667, 6 )
 identity = 5
 
-[connection signal="collected" from="." to="Container/Riceballs/RiceballHudIcon" method="_on_Score_collected"]
+[node name="RiceballhudIcon4" parent="Container/Riceballs" index="1" instance=ExtResource( 2 )]
 
-[connection signal="collected" from="." to="Container/Riceballs/RiceballHudIcon5" method="_on_Score_collected"]
+position = Vector2( 71.3333, 6 )
+identity = 4
 
-[connection signal="collected" from="." to="Container/Riceballs/RiceballHudIcon3" method="_on_Score_collected"]
+[node name="RiceballhudIcon3" parent="Container/Riceballs" index="2" instance=ExtResource( 2 )]
 
-[connection signal="collected" from="." to="Container/Riceballs/RiceballHudIcon4" method="_on_Score_collected"]
+position = Vector2( 76, 6 )
+identity = 3
 
-[connection signal="collected" from="." to="Container/Riceballs/RiceballHudIcon2" method="_on_Score_collected"]
+[node name="RiceballhudIcon2" parent="Container/Riceballs" index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 80.6666, 6 )
+identity = 2
+
+[node name="RiceballhudIcon" parent="Container/Riceballs" index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 85.3333, 6 )
+
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon3" method="_on_Score_collected"]
+
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon4" method="_on_Score_collected"]
+
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon2" method="_on_Score_collected"]
+
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon" method="_on_Score_collected"]
+
+[connection signal="collected" from="." to="Container/Riceballs/RiceballhudIcon5" method="_on_Score_collected"]
 
 
