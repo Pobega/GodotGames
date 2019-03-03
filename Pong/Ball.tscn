@@ -7,9 +7,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 15, 15 )
 
-[node name="Ball" type="KinematicBody2D"]
+[node name="Ball" type="KinematicBody2D" index="0"]
 
-position = Vector2( 512, 300 )
+position = Vector2( 502, 300 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -23,7 +23,7 @@ speed_step = 1.1
 
 points = PoolVector2Array( 0, -15, 0, 15 )
 width = 30.0
-default_color = Color( 1, 1, 1, 1 )
+default_color = Color( 0.00379467, 0.898885, 1, 1 )
 texture_mode = -1082130432
 sharp_limit = 2.0
 round_precision = 8

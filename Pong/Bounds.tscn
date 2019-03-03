@@ -1,0 +1,393 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5, 300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 517, 5 )
+_sections_unfolded = [ "Resource" ]
+
+[node name="Bounds" type="Line2D"]
+
+points = PoolVector2Array( -5, 60, 1029, 60, 1029, 595, -5, 595, -5, 55 )
+width = 10.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Goals" type="Node2D" parent="." index="0"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="LeftGoal" type="Area2D" parent="Goals" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Left" type="CollisionShape2D" parent="Goals/LeftGoal" index="0"]
+
+position = Vector2( 0, 300 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightGoal" type="Area2D" parent="Goals" index="1"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Right" type="CollisionShape2D" parent="Goals/RightGoal" index="0"]
+
+position = Vector2( 1024, 300 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Walls" type="StaticBody2D" parent="." index="1"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Top" type="CollisionShape2D" parent="Walls" index="0"]
+
+position = Vector2( 510, 60 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls" index="1"]
+
+position = Vector2( 510, 595 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Center Line" type="Node2D" parent="." index="2"]
+
+[node name="Line2D" type="Line2D" parent="Center Line" index="0"]
+
+position = Vector2( 502, 65 )
+points = PoolVector2Array( 0, 0, 0, 525 )
+width = 10.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dots" type="Node2D" parent="Center Line" index="1"]
+
+position = Vector2( 0, 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot" type="Line2D" parent="Center Line/Dots" index="0"]
+
+position = Vector2( 502, 65 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot2" type="Line2D" parent="Center Line/Dots" index="1"]
+
+position = Vector2( 502, 85 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot3" type="Line2D" parent="Center Line/Dots" index="2"]
+
+position = Vector2( 502, 105 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot4" type="Line2D" parent="Center Line/Dots" index="3"]
+
+position = Vector2( 502, 125 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot5" type="Line2D" parent="Center Line/Dots" index="4"]
+
+position = Vector2( 502, 145 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot6" type="Line2D" parent="Center Line/Dots" index="5"]
+
+position = Vector2( 502, 165 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot7" type="Line2D" parent="Center Line/Dots" index="6"]
+
+position = Vector2( 502, 185 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot8" type="Line2D" parent="Center Line/Dots" index="7"]
+
+position = Vector2( 502, 205 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot9" type="Line2D" parent="Center Line/Dots" index="8"]
+
+position = Vector2( 502, 225 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot10" type="Line2D" parent="Center Line/Dots" index="9"]
+
+position = Vector2( 502, 245 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot11" type="Line2D" parent="Center Line/Dots" index="10"]
+
+position = Vector2( 502, 265 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot12" type="Line2D" parent="Center Line/Dots" index="11"]
+
+position = Vector2( 502, 285 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot13" type="Line2D" parent="Center Line/Dots" index="12"]
+
+position = Vector2( 502, 305 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot14" type="Line2D" parent="Center Line/Dots" index="13"]
+
+position = Vector2( 502, 325 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot15" type="Line2D" parent="Center Line/Dots" index="14"]
+
+position = Vector2( 502, 345 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot16" type="Line2D" parent="Center Line/Dots" index="15"]
+
+position = Vector2( 502, 365 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot17" type="Line2D" parent="Center Line/Dots" index="16"]
+
+position = Vector2( 502, 385 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot18" type="Line2D" parent="Center Line/Dots" index="17"]
+
+position = Vector2( 502, 405 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot19" type="Line2D" parent="Center Line/Dots" index="18"]
+
+position = Vector2( 502, 425 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot20" type="Line2D" parent="Center Line/Dots" index="19"]
+
+position = Vector2( 502, 445 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot21" type="Line2D" parent="Center Line/Dots" index="20"]
+
+position = Vector2( 502, 465 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot22" type="Line2D" parent="Center Line/Dots" index="21"]
+
+position = Vector2( 502, 485 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot23" type="Line2D" parent="Center Line/Dots" index="22"]
+
+position = Vector2( 502, 505 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot24" type="Line2D" parent="Center Line/Dots" index="23"]
+
+position = Vector2( 502, 525 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot25" type="Line2D" parent="Center Line/Dots" index="24"]
+
+position = Vector2( 502, 545 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Dot26" type="Line2D" parent="Center Line/Dots" index="25"]
+
+position = Vector2( 502, 565 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 10.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+
