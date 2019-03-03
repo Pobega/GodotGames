@@ -22,7 +22,7 @@ func _physics_process(delta):
 func handle_collision(collision):
 	velocity = velocity.bounce(collision.normal)
 	if "Player" in collision.collider.get_name():
-		velocity.y = velocity.rotated(sign(collision.collider.velocity.y)).y
+		velocity.y = velocity.rotated(sign(velocity.x) * sign(collision.collider.velocity.y)).y
 		velocity.x *= speed_step
 		if abs(velocity.x) > MAX_SPEED:
 			velocity.x = MAX_SPEED * sign(velocity.x)
