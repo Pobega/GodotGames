@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Pong.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5, 300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 517, 5 )
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 50 )
+
+[node name="Pong" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Wall" type="Line2D" parent="." index="0"]
+
+points = PoolVector2Array( -5, 60, 1029, 60, 1029, 595, -5, 595, -5, 55 )
+width = 10.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Goals" type="Node2D" parent="Wall" index="0"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="LeftGoal" type="Area2D" parent="Wall/Goals" index="0"]
+
+editor/display_folded = true
+scale = Vector2( 1, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Left" type="CollisionShape2D" parent="Wall/Goals/LeftGoal" index="0"]
+
+position = Vector2( 0, 300 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightGoal" type="Area2D" parent="Wall/Goals" index="1"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Right" type="CollisionShape2D" parent="Wall/Goals/RightGoal" index="0"]
+
+position = Vector2( 1024, 300 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Walls" type="StaticBody2D" parent="Wall" index="1"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Top" type="CollisionShape2D" parent="Wall/Walls" index="0"]
+
+position = Vector2( 510, 60 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Bottom" type="CollisionShape2D" parent="Wall/Walls" index="1"]
+
+position = Vector2( 510, 595 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="RightWall" type="KinematicBody2D" parent="." index="2"]
+
+position = Vector2( 971.499, 323.836 )
+scale = Vector2( 1, 4.93274 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="RightWall" index="0"]
+
+points = PoolVector2Array( 0, -50, 0, 50 )
+width = 20.0
+default_color = Color( 0, 0.986493, 0.0472052, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" index="1"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="Wall/Goals/LeftGoal" to="." method="_on_LeftGoal_body_entered"]
+
+[connection signal="body_entered" from="Wall/Goals/RightGoal" to="." method="_on_RightGoal_body_entered"]
+
+
