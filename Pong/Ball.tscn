@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ball.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15, 15 )
+
+[node name="Ball" type="KinematicBody2D"]
+
+position = Vector2( 502, 300 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform", "collision" ]
+speed = 400
+speed_step = 1.1
+
+[node name="Line2D" type="Line2D" parent="." index="0"]
+
+points = PoolVector2Array( 0, -15, 0, 15 )
+width = 30.0
+default_color = Color( 0.00379467, 0.898885, 1, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Fill" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+
