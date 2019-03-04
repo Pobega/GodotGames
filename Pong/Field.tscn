@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Field.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -11,7 +13,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 517, 5 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Field" type="Line2D" index="0"]
+[node name="Field" type="Line2D"]
 
 points = PoolVector2Array( -5, 5, 1029, 5, 1029, 595, -5, 595, -5, 0 )
 width = 10.0
@@ -19,6 +21,7 @@ default_color = Color( 1, 1, 1, 1 )
 texture_mode = -1082130432
 sharp_limit = 2.0
 round_precision = 8
+script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
@@ -30,6 +33,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="LeftGoal" type="Area2D" parent="Goals" index="0"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -430,5 +434,9 @@ texture_mode = -1082130432
 sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="Goals/LeftGoal" to="." method="_on_LeftGoal_body_entered"]
+
+[connection signal="body_entered" from="Goals/RightGoal" to="." method="_on_RightGoal_body_entered"]
 
 
