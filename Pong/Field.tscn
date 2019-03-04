@@ -13,7 +13,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 517, 5 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Field" type="Line2D"]
+[node name="Field" type="Line2D" index="0"]
 
 points = PoolVector2Array( -5, 5, 1029, 5, 1029, 595, -5, 595, -5, 0 )
 width = 10.0

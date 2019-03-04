@@ -21,10 +21,10 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-[node name="Blocker" type="KinematicBody2D" parent="." index="2"]
+[node name="PlayerBlocker" type="KinematicBody2D" parent="." index="2"]
 
-position = Vector2( 971.499, 406.519 )
-scale = Vector2( 1, 1.44264 )
+position = Vector2( 970, 436.659 )
+scale = Vector2( 1, 1.76116 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -34,7 +34,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Line2D" type="Line2D" parent="Blocker" index="0"]
+[node name="Line2D" type="Line2D" parent="PlayerBlocker" index="0"]
 
 points = PoolVector2Array( 0, -50, 0, 50 )
 width = 20.0
@@ -43,15 +43,15 @@ texture_mode = -1082130432
 sharp_limit = 2.0
 round_precision = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBlocker" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Blocker2" type="KinematicBody2D" parent="." index="3"]
+[node name="PlayerBlocker2" type="KinematicBody2D" parent="." index="3"]
 
-position = Vector2( 971.499, 159.175 )
-scale = Vector2( 1, 1.44264 )
+position = Vector2( 970, 154.032 )
+scale = Vector2( 1, 1.76116 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -61,7 +61,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Line2D" type="Line2D" parent="Blocker2" index="0"]
+[node name="Line2D" type="Line2D" parent="PlayerBlocker2" index="0"]
 
 points = PoolVector2Array( 0, -50, 0, 50 )
 width = 20.0
@@ -70,7 +70,7 @@ texture_mode = -1082130432
 sharp_limit = 2.0
 round_precision = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker2" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBlocker2" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
