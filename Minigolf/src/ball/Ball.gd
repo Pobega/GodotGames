@@ -16,12 +16,10 @@ signal mouse_state_changed
 
 func _unhandled_input(event):
 	if event.is_action_pressed("putt"):
-		mouse_state = MOUSE_STATE.DRAGGING
-		emit_signal("mouse_state_changed", MOUSE_STATE.DRAGGING)
+		update_mouse_state(MOUSE_STATE.DRAGGING)
 		impulse_start = screen_clamp(event.position)
 	if event.is_action_released("putt") and mouse_state == MOUSE_STATE.DRAGGING:
-		mouse_state = MOUSE_STATE.NOT_DRAGGING
-		emit_signal("mouse_state_changed", MOUSE_STATE.NOT_DRAGGING)
+		update_mouse_state(MOUSE_STATE.NOT_DRAGGING)
 		hit_ball(impulse_start, screen_clamp(event.position))
 
 func _physics_process(delta):
@@ -32,6 +30,10 @@ func _physics_process(delta):
 	if velocity.abs().x < 1 and velocity.abs().y < 1 and ball_state == BALL_STATE.MOVING:
 		ball_state = BALL_STATE.STOPPED
 		velocity = Vector2()
+
+func update_mouse_state(state):
+	mouse_state = state
+	emit_signal("mouse_state_changed", state)
 
 func screen_clamp(screen_position):
 	var screen_size = get_viewport().get_visible_rect().size
