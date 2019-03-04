@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/flagpole/Flagpole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ball/Ball.tscn" type="PackedScene" id=3]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -37,6 +37,6 @@ position = Vector2( 97, 36 )
 [node name="Ball" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 88, 170 )
-drag = 0.97
+drag = 0.99
 
 
