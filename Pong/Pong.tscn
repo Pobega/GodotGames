@@ -1,17 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Pong.gd" type="Script" id=1]
 [ext_resource path="res://ScoreOverlay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ScoreOverlay.gd" type="Script" id=3]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Field.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Field.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 50 )
 
-[node name="Pong" type="Node"]
+[node name="Pong" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -19,15 +18,13 @@ script = ExtResource( 1 )
 
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 3 )
 
-[node name="Player" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-[node name="RightWall" type="KinematicBody2D" parent="." index="2"]
+[node name="Blocker" type="KinematicBody2D" parent="." index="2"]
 
-editor/display_folded = true
-position = Vector2( 971.499, 294.836 )
-scale = Vector2( 1, 4.93274 )
+position = Vector2( 971.499, 406.519 )
+scale = Vector2( 1, 1.44264 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -37,21 +34,48 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Line2D" type="Line2D" parent="RightWall" index="0"]
+[node name="Line2D" type="Line2D" parent="Blocker" index="0"]
 
 points = PoolVector2Array( 0, -50, 0, 50 )
 width = 20.0
-default_color = Color( 0, 0.986493, 0.0472052, 1 )
+default_color = Color( 1, 0, 0.697543, 1 )
 texture_mode = -1082130432
 sharp_limit = 2.0
 round_precision = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Field" parent="." index="3" instance=ExtResource( 5 )]
+[node name="Blocker2" type="KinematicBody2D" parent="." index="3"]
+
+position = Vector2( 971.499, 159.175 )
+scale = Vector2( 1, 1.44264 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="Blocker2" index="0"]
+
+points = PoolVector2Array( 0, -50, 0, 50 )
+width = 20.0
+default_color = Color( 1, 0, 0.697543, 1 )
+texture_mode = -1082130432
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker2" index="1"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Field" parent="." index="4" instance=ExtResource( 4 )]
 
 [connection signal="update_score" from="." to="ScoreOverlay" method="_on_Pong_update_score"]
 
