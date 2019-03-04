@@ -1,19 +1,27 @@
 extends KinematicBody2D
 
+export(float) var speed = 500
 export(float) var drag = 0.99
 
 var impulse_start
 var velocity = Vector2()
 
-enum STATE {MOVING, STOPPED}
-var state = STATE.STOPPED
+enum BALL_STATE {STOPPED, MOVING}
+var ball_state = BALL_STATE.STOPPED
+
+enum MOUSE_STATE {NOT_DRAGGING, DRAGGING}
+var mouse_state
+signal mouse_state_changed
 
 
 func _unhandled_input(event):
-	if state != STATE.STOPPED: return
 	if event.is_action_pressed("putt"):
+		mouse_state = MOUSE_STATE.DRAGGING
+		emit_signal("mouse_state_changed", MOUSE_STATE.DRAGGING)
 		impulse_start = screen_clamp(event.position)
-	if event.is_action_released("putt"):
+	if event.is_action_released("putt") and mouse_state == MOUSE_STATE.DRAGGING:
+		mouse_state = MOUSE_STATE.NOT_DRAGGING
+		emit_signal("mouse_state_changed", MOUSE_STATE.NOT_DRAGGING)
 		hit_ball(impulse_start, screen_clamp(event.position))
 
 func _physics_process(delta):
@@ -21,8 +29,8 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.normal)
 	velocity = velocity*drag
-	if velocity.abs().x < 1 and velocity.abs().y < 1 and state == STATE.MOVING:
-		state = STATE.STOPPED
+	if velocity.abs().x < 1 and velocity.abs().y < 1 and ball_state == BALL_STATE.MOVING:
+		ball_state = BALL_STATE.STOPPED
 		velocity = Vector2()
 
 func screen_clamp(screen_position):
@@ -38,5 +46,7 @@ func screen_clamp(screen_position):
 	return screen_position
 
 func hit_ball(start, end):
-	velocity = (start - end)*4
-	state = STATE.MOVING
+	if ball_state != BALL_STATE.STOPPED: return
+	velocity = (start - end)
+	velocity = velocity.normalized() * speed
+	ball_state = BALL_STATE.MOVING

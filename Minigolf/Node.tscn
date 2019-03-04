@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/tilemaps/grassy.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/flagpole/Flagpole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ball/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ui/LineController.tscn" type="PackedScene" id=4]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -37,6 +38,9 @@ position = Vector2( 97, 36 )
 [node name="Ball" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 88, 170 )
-drag = 0.99
+
+[node name="LineController" parent="." index="3" instance=ExtResource( 4 )]
+
+[connection signal="mouse_state_changed" from="Ball" to="LineController" method="_on_Ball_mouse_state_changed"]
 
 
