@@ -2,12 +2,12 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 50 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 40, 300 )
 input_pickable = false
@@ -32,7 +32,7 @@ round_precision = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 
