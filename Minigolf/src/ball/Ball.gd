@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal score
+signal mouse_state_changed
+
 export(float) var speed = 500
 export(float) var drag = 0.99
 
@@ -11,7 +14,6 @@ var ball_state = BALL_STATE.STOPPED
 
 enum MOUSE_STATE {NOT_DRAGGING, DRAGGING}
 var mouse_state
-signal mouse_state_changed
 
 
 func _unhandled_input(event):
@@ -37,18 +39,17 @@ func update_mouse_state(state):
 
 func screen_clamp(screen_position):
 	var screen_size = get_viewport().get_visible_rect().size
-	if screen_position.x < 0:
-		screen_position.x = 0
-	elif screen_position.x > screen_size.x:
-		screen_position.x = screen_size.x
-	if screen_position.y < 0:
-		screen_position.y = 0
-	elif screen_position.y > screen_size.y:
-		screen_position.y = screen_size.y
-	return screen_position
+	var clamped_position = Vector2()
+	clamped_position.x = clamp(screen_position.x, 0, screen_size.x)
+	clamped_position.y = clamp(screen_position.y, 0, screen_size.y)
+	return clamped_position
 
 func hit_ball(start, end):
 	if ball_state != BALL_STATE.STOPPED: return
-	velocity = (start - end)
-	velocity = velocity.normalized() * speed
+	print("Start: ", start, " End: ", end, "    Total: ", start-end, "     Normal: ", (start-end).normalized())
+	velocity = (start - end)*6
 	ball_state = BALL_STATE.MOVING
+
+func _on_Flagpole_body_entered(body):
+	print("Score")
+	if body == self: emit_signal("score")

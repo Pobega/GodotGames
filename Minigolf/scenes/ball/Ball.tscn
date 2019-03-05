@@ -17,6 +17,9 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
 speed = 500
 drag = 0.99
 

@@ -5,17 +5,13 @@ var state = STATE.NOT_DRAWING
 var line_start = Vector2()
 
 func _on_Ball_mouse_state_changed(mouse_state):
-	if mouse_state == STATE.NOT_DRAWING:
-		print("Erase line")
-	elif mouse_state == STATE.DRAWING:
+	if mouse_state == STATE.DRAWING:
 		line_start = get_viewport().get_mouse_position()
 	state = mouse_state
 
 func _draw():
-	if state == STATE.DRAWING:
-		draw_line(line_start, get_viewport().get_mouse_position(), Color(255,255,255))
-#	else:
-#		draw_line(Vector2(), Vector2(), Color(0, 0, 0, 1))
+	if state != STATE.DRAWING: return
+	draw_line(line_start, get_viewport().get_mouse_position(), Color(255,255,255))
 
 func _process(delta):
 	if state == STATE.DRAWING:
@@ -23,4 +19,3 @@ func _process(delta):
 		update()
 	else:
 		hide()
-	#print("Drawing from ", line_start, " to ", get_viewport().get_mouse_position())
