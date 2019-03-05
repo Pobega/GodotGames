@@ -35,6 +35,9 @@ position = Vector2( 87.9899, 49.5089 )
 [node name="Ball" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 92.041, 172.138 )
+speed = 5
+min_line_length = 5
+max_line_length = 60
 
 [node name="LineController" parent="." index="3" instance=ExtResource( 4 )]
 

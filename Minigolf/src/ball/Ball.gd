@@ -3,8 +3,10 @@ extends KinematicBody2D
 signal score
 signal mouse_state_changed
 
-export(float) var speed = 500
+export(float) var speed = 5
 export(float) var drag = 0.99
+export(float) var min_line_length = 5
+export(float) var max_line_length = 60
 
 var impulse_start
 var velocity = Vector2()
@@ -14,6 +16,8 @@ var ball_state = BALL_STATE.STOPPED
 
 enum MOUSE_STATE {NOT_DRAGGING, DRAGGING}
 var mouse_state
+
+onready var sprite = get_node("Sprite")
 
 
 func _unhandled_input(event):
@@ -33,6 +37,11 @@ func _physics_process(delta):
 		ball_state = BALL_STATE.STOPPED
 		velocity = Vector2()
 
+func _process(delta):
+	if ball_state == BALL_STATE.MOVING:
+		var current_speed = velocity.length()
+		sprite.rotate(sign(velocity.x) * current_speed/300)
+
 func update_mouse_state(state):
 	mouse_state = state
 	emit_signal("mouse_state_changed", state)
@@ -50,8 +59,8 @@ func hit_ball(start, end):
 	ball_state = BALL_STATE.MOVING
 
 func ball_speed(hit_vector):
-	var speed_multiplier = clamp(hit_vector.length(), 5, 60)
-	return speed * speed_multiplier / 100
+	var speed_multiplier = clamp(hit_vector.length(), min_line_length, max_line_length)
+	return speed * speed_multiplier
 
 func _on_Flagpole_body_entered(body):
 	print("Score")
