@@ -94,13 +94,21 @@ extents = Vector2( 1, 2.5 )
 
 [node name="Walls" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
+
 [node name="TopLeft" type="Sprite" parent="Walls" index="0"]
 
 editor/display_folded = true
+position = Vector2( 14, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
+region_enabled = true
+region_rect = Rect2( 0, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/TopLeft" index="0"]
 
@@ -127,12 +135,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="TopCenter" type="Sprite" parent="Walls" index="1"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 23, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 1
+region_enabled = true
+region_rect = Rect2( 8, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/TopCenter" index="0"]
 
@@ -153,12 +165,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="TopRight" type="Sprite" parent="Walls" index="2"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 32, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 2
+region_enabled = true
+region_rect = Rect2( 16, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/TopRight" index="0"]
 
@@ -185,12 +201,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="CenterLeft" type="Sprite" parent="Walls" index="3"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 14, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 8
+region_enabled = true
+region_rect = Rect2( 0, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/CenterLeft" index="0"]
 
@@ -210,21 +230,27 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CenterMiddle" type="Sprite" parent="Walls" index="4"]
 
-visible = false
+position = Vector2( 23, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 9
+region_enabled = true
+region_rect = Rect2( 8, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
 
 [node name="CenterRight" type="Sprite" parent="Walls" index="5"]
 
-visible = false
+editor/display_folded = true
+position = Vector2( 32, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 10
+region_enabled = true
+region_rect = Rect2( 16, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/CenterRight" index="0"]
 
@@ -245,12 +271,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="BottomLeft" type="Sprite" parent="Walls" index="6"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 14, 22 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 16
+region_enabled = true
+region_rect = Rect2( 0, 16, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/BottomLeft" index="0"]
 
@@ -277,12 +307,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="BottomCenter" type="Sprite" parent="Walls" index="7"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 23, 22 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 17
+region_enabled = true
+region_rect = Rect2( 8, 16, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/BottomCenter" index="0"]
 
@@ -303,12 +337,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="BottomRight" type="Sprite" parent="Walls" index="8"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 32, 22 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 18
+region_enabled = true
+region_rect = Rect2( 16, 16, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/BottomRight" index="0"]
 
@@ -335,12 +373,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="Outside1" type="Sprite" parent="Walls" index="9"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 14, 31 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 24
+region_enabled = true
+region_rect = Rect2( 8, 24, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/Outside1" index="0"]
 
@@ -361,12 +403,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="Outside2" type="Sprite" parent="Walls" index="10"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 32, 31 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 26
+region_enabled = true
+region_rect = Rect2( 16, 24, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Walls/Outside2" index="0"]
 
@@ -384,17 +430,599 @@ position = Vector2( 0, -1.5 )
 shape = SubResource( 13 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Edges" type="Node2D" parent="." index="1"]
+[node name="Diagonals" type="Node2D" parent="." index="1"]
+
+[node name="Diagonal1" type="Sprite" parent="Diagonals" index="0"]
+
+editor/display_folded = true
+position = Vector2( 54, 23 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 32, 16, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal1" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal1/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, 4, -4, 3, 3, -4, 4, -4, 4, 3, 3, 4 )
+
+[node name="Diagonal2" type="Sprite" parent="Diagonals" index="1"]
+
+editor/display_folded = true
+position = Vector2( 63, 23 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 40, 16, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal2/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, -4, -3, -4, 4, 3, 4, 4, -3, 4, -4, 3 )
+
+[node name="Diagonal3" type="Sprite" parent="Diagonals" index="2"]
+
+editor/display_folded = true
+position = Vector2( 45, 32 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 24, 24, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal3" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal3/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 4, 4, 4, -4, 3, -4, 0, -1, 0, 4 )
+
+[node name="Diagonal4" type="Sprite" parent="Diagonals" index="3"]
+
+editor/display_folded = true
+position = Vector2( 54, 32 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 32, 24, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal4" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal4/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, 3, 3, -4, -4, -4 )
+
+[node name="Diagonal5" type="Sprite" parent="Diagonals" index="4"]
+
+editor/display_folded = true
+position = Vector2( 63, 32 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 40, 24, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal5" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal5/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 4, 3, -3, -4, 4, -4 )
+
+[node name="Diagonal6" type="Sprite" parent="Diagonals" index="5"]
+
+editor/display_folded = true
+position = Vector2( 72, 32 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 48, 24, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal6" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal6/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, -4, -3, -4, 0, -1, 0, 4, -4, 4 )
+
+[node name="Diagonal7" type="Sprite" parent="Diagonals" index="6"]
+
+editor/display_folded = true
+position = Vector2( 45, 41 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 24, 32, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal7" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal7/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 4, 2, 0, -2, 0, -4, 4, -4 )
+
+[node name="Diagonal8" type="Sprite" parent="Diagonals" index="7"]
+
+editor/display_folded = true
+position = Vector2( 54, 41 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 32, 32, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal8" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal8/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -2, 4, -4, 2, -4, -4, -2, -4, 4, 2, 4, 4 )
+
+[node name="Diagonal9" type="Sprite" parent="Diagonals" index="8"]
+
+editor/display_folded = true
+position = Vector2( 63, 41 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 40, 32, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal9" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal9/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, 4, -4, 2, 2, -4, 4, -4, 4, 2, 2, 4 )
+
+[node name="Diagonal10" type="Sprite" parent="Diagonals" index="9"]
+
+editor/display_folded = true
+position = Vector2( 72, 41 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 48, 32, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal10" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal10/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, 2, 0, -2, 0, -4, -4, -4 )
+
+[node name="Diagonal11" type="Sprite" parent="Diagonals" index="10"]
+
+editor/display_folded = true
+position = Vector2( 54, 50 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 32, 40, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal11" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal11/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 4, 1, 3, 1, -2, -4, 4, -4 )
+
+[node name="Diagonal12" type="Sprite" parent="Diagonals" index="11"]
+
+editor/display_folded = true
+position = Vector2( 63, 50 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 40, 40, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal12" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal12/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, 1, -3, 1, 2, -4, -4, -4 )
+
+[node name="Diagonal13" type="Sprite" parent="Diagonals" index="12"]
+
+editor/display_folded = true
+position = Vector2( 82, 39 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 16, 40, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal13" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal13/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -2, 4, -2, 1, 3, -4, -4, -4, -4, 4 )
+
+[node name="Diagonal14" type="Sprite" parent="Diagonals" index="13"]
+
+editor/display_folded = true
+position = Vector2( 91, 39 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 24, 40, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal14" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal14/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 2, 4, 2, 1, -3, -4, 4, -4, 4, 4 )
+
+[node name="Diagonal15" type="Sprite" parent="Diagonals" index="14"]
+
+editor/display_folded = true
+position = Vector2( 82, 48 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 0, 40, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal15" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal15/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, 3, -2, 1, 4, 1, 4, -4, -4, -4 )
+
+[node name="Diagonal16" type="Sprite" parent="Diagonals" index="15"]
+
+editor/display_folded = true
+position = Vector2( 91, 48 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 8, 40, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal16" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal16/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, -4, 4, -4, 4, 3, 2, 1, -4, 1 )
+
+[node name="Diagonal17" type="Sprite" parent="Diagonals" index="16"]
+
+position = Vector2( 22, 43 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 0, 48, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal17" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal17/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 2, 4, 4, 2, 4, 4 )
+
+[node name="Diagonal18" type="Sprite" parent="Diagonals" index="17"]
+
+position = Vector2( 31, 43 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 8, 48, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal18" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal18/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -2, 4, -4, 2, -4, 4 )
+
+[node name="Diagonal19" type="Sprite" parent="Diagonals" index="18"]
+
+position = Vector2( 22, 52 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 0, 56, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal19" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal19/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 2, -4, 4, -2, 4, -4 )
+
+[node name="Diagonal20" type="Sprite" parent="Diagonals" index="19"]
+
+position = Vector2( 31, 52 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 8, 56, 8, 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Diagonals/Diagonal20" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal20/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -4, -2, -2, -4, -4, -4 )
+
+[node name="Edges" type="Node2D" parent="." index="2"]
 
 [node name="Edge1" type="Sprite" parent="Edges" index="0"]
 
 editor/display_folded = true
-visible = false
+position = Vector2( 45, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 3
+region_enabled = true
+region_rect = Rect2( 24, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Edges/Edge1" index="0"]
 
@@ -414,11 +1042,17 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Edge2" type="Sprite" parent="Edges" index="1"]
 
+editor/display_folded = true
+position = Vector2( 54, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 4
+region_enabled = true
+region_rect = Rect2( 32, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Edges/Edge2" index="0"]
 
@@ -438,12 +1072,17 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Edge3" type="Sprite" parent="Edges" index="2"]
 
-visible = false
+editor/display_folded = true
+position = Vector2( 45, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 11
+region_enabled = true
+region_rect = Rect2( 24, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Edges/Edge3" index="0"]
 
@@ -463,12 +1102,17 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Edge4" type="Sprite" parent="Edges" index="3"]
 
-visible = false
+editor/display_folded = true
+position = Vector2( 54, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 12
+region_enabled = true
+region_rect = Rect2( 32, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="StaticBody2D" parent="Edges/Edge4" index="0"]
 
@@ -486,54 +1130,56 @@ position = Vector2( -3, -1.5 )
 shape = SubResource( 17 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Grass Variants" type="Node2D" parent="." index="2"]
-
-editor/display_folded = true
-visible = false
+[node name="Grass Variants" type="Node2D" parent="." index="3"]
 
 [node name="Grass1" type="Sprite" parent="Grass Variants" index="0"]
 
-visible = false
+position = Vector2( 68, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 9
+region_enabled = true
+region_rect = Rect2( 8, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
 
 [node name="Grass2" type="Sprite" parent="Grass Variants" index="1"]
 
-visible = false
+position = Vector2( 77, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 14
+region_enabled = true
+region_rect = Rect2( 48, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
 
 [node name="Grass3" type="Sprite" parent="Grass Variants" index="2"]
 
-visible = false
+position = Vector2( 77, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 15
+region_enabled = true
+region_rect = Rect2( 56, 8, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
 
 [node name="Grass4" type="Sprite" parent="Grass Variants" index="3"]
 
-visible = false
+position = Vector2( 86, 4 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 6
+region_enabled = true
+region_rect = Rect2( 48, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
 
 [node name="Grass5" type="Sprite" parent="Grass Variants" index="4"]
 
-visible = false
+position = Vector2( 86, 13 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 7
+region_enabled = true
+region_rect = Rect2( 56, 0, 8, 8 )
 _sections_unfolded = [ "Animation", "Region" ]
 
 
