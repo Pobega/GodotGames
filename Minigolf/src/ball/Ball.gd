@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.normal)
 	velocity = velocity*drag
-	if velocity.abs().x < 1 and velocity.abs().y < 1 and ball_state == BALL_STATE.MOVING:
+	if velocity.abs().x < 3 and velocity.abs().y < 3 and ball_state == BALL_STATE.MOVING:
 		ball_state = BALL_STATE.STOPPED
 		velocity = Vector2()
 
@@ -46,9 +46,12 @@ func screen_clamp(screen_position):
 
 func hit_ball(start, end):
 	if ball_state != BALL_STATE.STOPPED: return
-	print("Start: ", start, " End: ", end, "    Total: ", start-end, "     Normal: ", (start-end).normalized())
-	velocity = (start - end)*6
+	velocity = (start-end).normalized() * ball_speed(start-end)
 	ball_state = BALL_STATE.MOVING
+
+func ball_speed(hit_vector):
+	var speed_multiplier = clamp(hit_vector.length(), 5, 60)
+	return speed * speed_multiplier / 100
 
 func _on_Flagpole_body_entered(body):
 	print("Score")
