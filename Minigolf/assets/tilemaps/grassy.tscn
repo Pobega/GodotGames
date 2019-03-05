@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/images/tileset/tileset.png" type="Texture" id=1]
 
@@ -10,13 +10,13 @@ extents = Vector2( 1, 3.5 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3.5, 2.5 )
+extents = Vector2( 3.5, 3 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 2.5 )
+extents = Vector2( 4, 3 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -27,7 +27,7 @@ extents = Vector2( 1, 3.5 )
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3.5, 2.5 )
+extents = Vector2( 3.5, 3 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -70,31 +70,9 @@ extents = Vector2( 4, 2.5 )
 custom_solver_bias = 0.0
 extents = Vector2( 4, 2.5 )
 
-[sub_resource type="RectangleShape2D" id=14]
-
-custom_solver_bias = 0.0
-extents = Vector2( 1, 1 )
-
-[sub_resource type="RectangleShape2D" id=15]
-
-custom_solver_bias = 0.0
-extents = Vector2( 1, 1 )
-
-[sub_resource type="RectangleShape2D" id=16]
-
-custom_solver_bias = 0.0
-extents = Vector2( 1, 2.5 )
-
-[sub_resource type="RectangleShape2D" id=17]
-
-custom_solver_bias = 0.0
-extents = Vector2( 1, 2.5 )
-
 [node name="Grass Tilemap" type="Node2D"]
 
 [node name="Walls" type="Node2D" parent="." index="0"]
-
-editor/display_folded = true
 
 [node name="TopLeft" type="Sprite" parent="Walls" index="0"]
 
@@ -128,7 +106,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/TopLeft/Area2D" index="1"]
 
-position = Vector2( 0.5, -1.5 )
+position = Vector2( 0.5, -1 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
@@ -158,7 +136,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopCenter/Area2D" index="0"]
 
-position = Vector2( 0, -1.5 )
+position = Vector2( 0, -1 )
 shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
@@ -194,7 +172,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/TopRight/Area2D" index="1"]
 
-position = Vector2( -0.5, -1.5 )
+position = Vector2( -0.5, -1 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
@@ -459,7 +437,10 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal1/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, 4, -4, 3, 3, -4, 4, -4, 4, 3, 3, 4 )
+polygon = PoolVector2Array( -4, 4, 4, -4, 4, 2, 2, 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Diagonal2" type="Sprite" parent="Diagonals" index="1"]
 
@@ -488,7 +469,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal2/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, -4, -3, -4, 4, 3, 4, 4, -3, 4, -4, 3 )
+polygon = PoolVector2Array( -4, -4, 4, 4, -2, 4, -4, 2 )
 
 [node name="Diagonal3" type="Sprite" parent="Diagonals" index="2"]
 
@@ -517,7 +498,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal3/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 4, 4, 4, -4, 3, -4, 0, -1, 0, 4 )
+polygon = PoolVector2Array( 4, 4, 4, -4, 0, 0, 0, 4 )
 
 [node name="Diagonal4" type="Sprite" parent="Diagonals" index="3"]
 
@@ -546,7 +527,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal4/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, 3, 3, -4, -4, -4 )
+polygon = PoolVector2Array( -4, 2, 2, -4, -4, -4 )
 
 [node name="Diagonal5" type="Sprite" parent="Diagonals" index="4"]
 
@@ -575,7 +556,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal5/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 4, 3, -3, -4, 4, -4 )
+polygon = PoolVector2Array( 4, 2, -2, -4, 4, -4 )
 
 [node name="Diagonal6" type="Sprite" parent="Diagonals" index="5"]
 
@@ -604,7 +585,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal6/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, -4, -3, -4, 0, -1, 0, 4, -4, 4 )
+polygon = PoolVector2Array( -4, -4, 0, 0, 0, 4, -4, 4 )
 
 [node name="Diagonal7" type="Sprite" parent="Diagonals" index="6"]
 
@@ -633,7 +614,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal7/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 4, 2, 0, -2, 0, -4, 4, -4 )
+polygon = PoolVector2Array( 4, 1, 0, -3, 0, -4, 4, -4 )
 
 [node name="Diagonal8" type="Sprite" parent="Diagonals" index="7"]
 
@@ -662,7 +643,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal8/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -2, 4, -4, 2, -4, -4, -2, -4, 4, 2, 4, 4 )
+polygon = PoolVector2Array( -1, 4, -4, 1, -4, -4, -3, -4, 4, 3, 4, 4 )
 
 [node name="Diagonal9" type="Sprite" parent="Diagonals" index="8"]
 
@@ -691,7 +672,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal9/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, 4, -4, 2, 2, -4, 4, -4, 4, 2, 2, 4 )
+polygon = PoolVector2Array( -4, 4, -4, 3, 3, -4, 4, -4, 4, 1, 1, 4 )
 
 [node name="Diagonal10" type="Sprite" parent="Diagonals" index="9"]
 
@@ -720,7 +701,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal10/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, 2, 0, -2, 0, -4, -4, -4 )
+polygon = PoolVector2Array( -4, 1, 0, -3, 0, -4, -4, -4 )
 
 [node name="Diagonal11" type="Sprite" parent="Diagonals" index="10"]
 
@@ -749,7 +730,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal11/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 4, 1, 3, 1, -2, -4, 4, -4 )
+polygon = PoolVector2Array( 4, 1, -1, -4, 4, -4 )
 
 [node name="Diagonal12" type="Sprite" parent="Diagonals" index="11"]
 
@@ -778,7 +759,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal12/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, 1, -3, 1, 2, -4, -4, -4 )
+polygon = PoolVector2Array( -4, 1, 1, -4, -4, -4 )
 
 [node name="Diagonal13" type="Sprite" parent="Diagonals" index="12"]
 
@@ -807,7 +788,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal13/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -2, 4, -2, 1, 3, -4, -4, -4, -4, 4 )
+polygon = PoolVector2Array( -2, 4, -2, 0, 2, -4, -4, -4, -4, 4 )
 
 [node name="Diagonal14" type="Sprite" parent="Diagonals" index="13"]
 
@@ -836,7 +817,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal14/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 2, 4, 2, 1, -3, -4, 4, -4, 4, 4 )
+polygon = PoolVector2Array( 2, 4, 2, 0, -2, -4, 4, -4, 4, 4 )
 
 [node name="Diagonal15" type="Sprite" parent="Diagonals" index="14"]
 
@@ -865,11 +846,10 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal15/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, 3, -2, 1, 4, 1, 4, -4, -4, -4 )
+polygon = PoolVector2Array( -4, 2, -2, 2, 4, 2, 4, -4, -4, -4 )
 
 [node name="Diagonal16" type="Sprite" parent="Diagonals" index="15"]
 
-editor/display_folded = true
 position = Vector2( 91, 48 )
 texture = ExtResource( 1 )
 vframes = 8
@@ -894,7 +874,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal16/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, -4, 4, -4, 4, 3, 2, 1, -4, 1 )
+polygon = PoolVector2Array( -4, -4, 4, -4, 4, 2, 2, 2, -4, 2 )
 
 [node name="Diagonal17" type="Sprite" parent="Diagonals" index="16"]
 
@@ -922,7 +902,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal17/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 2, 4, 4, 2, 4, 4 )
+polygon = PoolVector2Array( 3, 4, 4, 3, 4, 4 )
 
 [node name="Diagonal18" type="Sprite" parent="Diagonals" index="17"]
 
@@ -950,7 +930,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal18/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -2, 4, -4, 2, -4, 4 )
+polygon = PoolVector2Array( -3, 4, -4, 3, -4, 4 )
 
 [node name="Diagonal19" type="Sprite" parent="Diagonals" index="18"]
 
@@ -978,7 +958,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal19/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 2, -4, 4, -2, 4, -4 )
+polygon = PoolVector2Array( 3, -4, 4, -3, 4, -4 )
 
 [node name="Diagonal20" type="Sprite" parent="Diagonals" index="19"]
 
@@ -1006,7 +986,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Diagonals/Diagonal20/Area2D" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -4, -2, -2, -4, -4, -4 )
+polygon = PoolVector2Array( -4, -3, -3, -4, -4, -4 )
 
 [node name="Edges" type="Node2D" parent="." index="2"]
 
@@ -1034,11 +1014,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge1/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Edges/Edge1/Area2D" index="0"]
 
-position = Vector2( 3, 3 )
-shape = SubResource( 14 )
-_sections_unfolded = [ "Transform" ]
+build_mode = 0
+polygon = PoolVector2Array( 2, 4, 4, 2, 4, 4 )
 
 [node name="Edge2" type="Sprite" parent="Edges" index="1"]
 
@@ -1064,11 +1043,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge2/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Edges/Edge2/Area2D" index="0"]
 
-position = Vector2( -3, 3 )
-shape = SubResource( 15 )
-_sections_unfolded = [ "Transform" ]
+build_mode = 0
+polygon = PoolVector2Array( -2, 4, -4, 2, -4, 4 )
 
 [node name="Edge3" type="Sprite" parent="Edges" index="2"]
 
@@ -1094,15 +1072,13 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge3/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Edges/Edge3/Area2D" index="0"]
 
-position = Vector2( 3, -1.5 )
-shape = SubResource( 16 )
-_sections_unfolded = [ "Transform" ]
+build_mode = 0
+polygon = PoolVector2Array( 4, 2, 2, 0, 2, -4, 4, -4 )
 
 [node name="Edge4" type="Sprite" parent="Edges" index="3"]
 
-editor/display_folded = true
 position = Vector2( 54, 13 )
 texture = ExtResource( 1 )
 vframes = 8
@@ -1124,11 +1100,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge4/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Edges/Edge4/Area2D" index="0"]
 
-position = Vector2( -3, -1.5 )
-shape = SubResource( 17 )
-_sections_unfolded = [ "Transform" ]
+build_mode = 0
+polygon = PoolVector2Array( -4, 2, -2, 0, -2, -4, -4, -4, -4, 2 )
 
 [node name="Grass Variants" type="Node2D" parent="." index="3"]
 
