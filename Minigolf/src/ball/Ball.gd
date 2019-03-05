@@ -33,7 +33,7 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.normal)
 	velocity = velocity*drag
-	if velocity.abs().x < 3 and velocity.abs().y < 3 and ball_state == BALL_STATE.MOVING:
+	if velocity.length() < 3 and ball_state == BALL_STATE.MOVING:
 		ball_state = BALL_STATE.STOPPED
 		velocity = Vector2()
 
