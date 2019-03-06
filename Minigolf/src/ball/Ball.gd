@@ -3,10 +3,14 @@ extends KinematicBody2D
 signal score
 signal mouse_state_changed
 
-export(float) var speed = 5
-export(float) var drag = 0.99
+export(float) var min_speed = 20
+export(float) var max_speed = 300
 export(float) var min_line_length = 5
-export(float) var max_line_length = 60
+export(float) var max_line_length = 120
+
+# Temporary hardcoded drag
+# To be replaced with surface friction
+export(float) var drag = 0.99
 
 var impulse_start
 var velocity = Vector2()
@@ -59,8 +63,14 @@ func hit_ball(start, end):
 	ball_state = BALL_STATE.MOVING
 
 func ball_speed(hit_vector):
-	var speed_multiplier = clamp(hit_vector.length(), min_line_length, max_line_length)
-	return speed * speed_multiplier
+	# Get the length of our drawn vector clamped to the min/maximum drawable
+	var attack_vector_length = clamp(hit_vector.length(), min_line_length, max_line_length)
+	# Calculate what % of the line we drew (between min and max line length)
+	var attack_percentage = (attack_vector_length-min_line_length) / (max_line_length-min_line_length)
+	# Figure out how much speed we need to apply (based on % of line drawn)
+	var speed = ((max_speed - min_speed) * attack_percentage) + min_speed
+	# Clamp speed to min and max
+	return clamp(speed, min_speed, max_speed)
 
 func _on_Flagpole_body_entered(body):
 	print("Score")
