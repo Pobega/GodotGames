@@ -16,7 +16,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 3.04138
+radius = 2.06155
 
 [node name="Flagpole" type="Area2D"]
 
@@ -37,7 +37,6 @@ __meta__ = {
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 

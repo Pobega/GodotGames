@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 3.0
+radius = 2.0
 
 [node name="Ball" type="KinematicBody2D" index="0"]
 
@@ -20,7 +20,10 @@ _sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pick
 __meta__ = {
 "_edit_group_": true
 }
-speed = 500
+min_speed = 20
+max_speed = 300
+min_line_length = 5
+max_line_length = 120
 drag = 0.99
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

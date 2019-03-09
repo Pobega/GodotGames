@@ -73,5 +73,6 @@ func ball_speed(hit_vector):
 	return clamp(speed, min_speed, max_speed)
 
 func _on_Flagpole_body_entered(body):
-	print("Score")
-	if body == self: emit_signal("score")
+	if body == self and velocity.length()+min_speed < (max_speed-min_speed)/3:
+		emit_signal("score")
+		queue_free()
