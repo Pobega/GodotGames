@@ -14,6 +14,10 @@ config/name="Basic MiniGolf"
 run/main_scene="res://scenes/main/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LevelLoader="*res://src/main/LevelLoader.gd"
+
 [display]
 
 window/size/width=120
