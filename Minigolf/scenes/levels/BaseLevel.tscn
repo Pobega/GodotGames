@@ -13,22 +13,27 @@ script = ExtResource( 1 )
 
 [node name="Tiles" type="Node2D" parent="." index="0"]
 
-scale = Vector2( 1, 1 )
+[node name="YSort" type="YSort" parent="." index="1"]
 
-[node name="Flagpole" parent="." index="1" instance=ExtResource( 2 )]
+scale = Vector2( 1, 1 )
+sort_enabled = true
+
+[node name="Flagpole" parent="YSort" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 67, 71 )
+scale = Vector2( 1, 1 )
 
-[node name="Ball" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Ball" parent="YSort" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 56, 95 )
+scale = Vector2( 1, 1 )
 
-[node name="LineController" parent="." index="3" instance=ExtResource( 4 )]
+[node name="LineController" parent="." index="2" instance=ExtResource( 4 )]
 
-[connection signal="body_entered" from="Flagpole" to="Ball" method="_on_Flagpole_body_entered"]
+[connection signal="body_entered" from="YSort/Flagpole" to="YSort/Ball" method="_on_Flagpole_body_entered"]
 
-[connection signal="mouse_state_changed" from="Ball" to="LineController" method="_on_Ball_mouse_state_changed"]
+[connection signal="mouse_state_changed" from="YSort/Ball" to="LineController" method="_on_Ball_mouse_state_changed"]
 
-[connection signal="score" from="Ball" to="." method="_on_Ball_score"]
+[connection signal="score" from="YSort/Ball" to="." method="_on_Ball_score"]
 
 

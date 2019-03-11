@@ -26,12 +26,12 @@ format = 1
 tile_data = PoolIntArray( 2097166, 0, 0, 2097168, 1, 0, 2097170, 2, 0, 2228238, 3, 0, 2228240, 4, 0, 2228242, 5, 0, 2359310, 3, 0, 2359312, 4, 0, 2359314, 5, 0, 2490382, 3, 0, 2490384, 4, 0, 2490386, 5, 0, 2621454, 3, 0, 2621456, 4, 0, 2621458, 5, 0, 2752526, 3, 0, 2752528, 4, 0, 2752530, 5, 0, 2883598, 6, 0, 2883600, 7, 0, 2883602, 8, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
 
-[node name="Flagpole" parent="." index="1"]
+[node name="Flagpole" parent="YSort" index="0"]
 
-position = Vector2( 69, 168 )
+position = Vector2( 66, 154 )
 
-[node name="Ball" parent="." index="2"]
+[node name="Ball" parent="YSort" index="1"]
 
-position = Vector2( 67, 139 )
+position = Vector2( 68, 149 )
 
 
